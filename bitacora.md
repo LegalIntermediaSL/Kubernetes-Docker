@@ -27,6 +27,11 @@ Registro de trabajo, decisiones y próximos pasos del repositorio.
 - Se añadió una guía comparativa de proyecto fullstack en `docs/04-proyecto-multiservicio.md`.
 - Se abrió un bloque superior del curso con RBAC, `NetworkPolicy`, `StatefulSet`, HPA, entornos, CI/CD y GitOps.
 - Se añadieron laboratorios `rbac-demo`, `network-policy-demo` y `scaling-demo`.
+- Se añadió un chart Helm completo para `fullstack-demo` con valores `dev`, `demo` y `prod`.
+- Se añadió un laboratorio de PostgreSQL con `PVC`, `Secret`, `ConfigMap`, `Service` y `readinessProbe`.
+- Se añadieron nuevos módulos de cookbook de troubleshooting, seguridad aplicada y observabilidad práctica.
+- Se añadieron documentos de CI/CD y workflows reales en `.github/workflows/`.
+- Se añadió un bloque de retos prácticos para consolidar el aprendizaje por niveles.
 
 ### Decisiones tomadas
 
@@ -36,8 +41,8 @@ Registro de trabajo, decisiones y próximos pasos del repositorio.
 
 ### Próximos pasos sugeridos
 
-- Ejecutar la Fase 1 del plan de expansión.
-- Consolidar o ampliar los laboratorios recién añadidos.
-- Añadir ejemplos con `PersistentVolumeClaim` más cercanos a aplicaciones reales.
-- Incorporar ejercicios de seguridad, probes y recursos.
-- Empaquetar el proyecto multiservicio con Helm.
+- Añadir una promoción de imágenes o releases más explícita por entorno.
+- Conectar el laboratorio de PostgreSQL con una aplicación que haga lecturas y escrituras reales.
+- Incluir un apéndice opcional de métricas con Prometheus y Grafana.
+- Incorporar un bloque introductorio de GitOps aplicado al chart Helm del proyecto principal.
+- Añadir más retos de diagnóstico con fallos intencionales y soluciones guiadas.

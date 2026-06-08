@@ -1,0 +1,12 @@
+environment: demo
+
+api:
+  replicaCount: 2
+  appEnv: demo
+
+web:
+  replicaCount: 1
+
+ingress:
+  enabled: true
+  host: demo.fullstack.local

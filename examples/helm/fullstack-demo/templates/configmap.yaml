@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "fullstack-demo.fullname" . }}-config
+  labels:
+{{ include "fullstack-demo.labels" . | indent 4 }}
+data:
+  APP_NAME: {{ .Values.api.appName | quote }}
+  APP_ENV: {{ .Values.api.appEnv | quote }}
+  PORT: {{ .Values.api.port | quote }}
+  REDIS_HOST: {{ printf "%s-redis" (include "fullstack-demo.fullname" .) | quote }}
+  REDIS_PORT: "6379"
+  REDIS_KEY: {{ .Values.api.redisKey | quote }}

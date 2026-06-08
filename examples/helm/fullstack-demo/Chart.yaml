@@ -1,0 +1,6 @@
+apiVersion: v2
+name: fullstack-demo
+description: Chart Helm para la aplicación fullstack del curso
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

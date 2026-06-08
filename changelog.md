@@ -119,3 +119,28 @@ Este archivo registra los cambios relevantes del repositorio.
 
 - `README.md` y `docs/temario-completo.md` reorganizados para abrir explícitamente un bloque de nivel superior.
 - `docs/kubernetes/11-probes-recursos-y-scheduling.md` y `docs/04-proyecto-multiservicio.md` enlazados con los nuevos temas avanzados.
+
+## [0.8.0] - 2026-06-08
+
+### Añadido
+
+- `examples/helm/fullstack-demo/` con chart Helm completo para `frontend`, `api`, `redis`, `ConfigMap`, `Secret`, `Service` e `Ingress`.
+- `examples/helm/fullstack-demo/values-dev.yaml`, `values-demo.yaml` y `values-prod.yaml` para promoción por entorno.
+- `docs/kubernetes/15-postgres-pvc-y-inicializacion.md`.
+- `examples/k8s/postgres-demo/` con `PVC`, `ConfigMap`, `Secret`, `Deployment` y `Service`.
+- `docs/kubernetes/16-cookbook-de-troubleshooting.md`.
+- `docs/kubernetes/17-seguridad-aplicada-y-hardening.md`.
+- `docs/kubernetes/18-observabilidad-practica.md`.
+- `docs/ci-cd/01-introduccion-ci-cd.md`.
+- `docs/ci-cd/02-workflows-del-repo.md`.
+- `.github/workflows/ci.yml`.
+- `.github/workflows/docker-build.yml`.
+- `.github/workflows/helm-validate.yml`.
+- `docs/05-retos-practicos.md`.
+
+### Cambiado
+
+- `README.md` ampliado para reflejar la nueva capa práctica avanzada, el bloque de CI/CD y los retos.
+- `docs/temario-completo.md` reorganizado para incluir operación, automatización y retos como bloques explícitos.
+- `docs/plan-expansion.md` alineado con los entregables ya materializados en Helm, CI/CD y operación.
+- `bitacora.md` actualizada con el trabajo realizado y los siguientes saltos de expansión.

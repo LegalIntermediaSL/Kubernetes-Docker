@@ -53,6 +53,10 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 1. [RBAC, NetworkPolicies y aislamiento](kubernetes/12-rbac-network-policies-y-aislamiento.md)
 2. [StatefulSet, HPA y patrones de escalado](kubernetes/13-statefulsets-hpa-y-patrones-de-escalado.md)
 3. [Entornos, CI/CD y GitOps](kubernetes/14-entornos-ci-cd-y-gitops.md)
+4. [Postgres, PVC e inicialización](kubernetes/15-postgres-pvc-y-inicializacion.md)
+5. [Cookbook de troubleshooting](kubernetes/16-cookbook-de-troubleshooting.md)
+6. [Seguridad aplicada y hardening](kubernetes/17-seguridad-aplicada-y-hardening.md)
+7. [Observabilidad práctica](kubernetes/18-observabilidad-practica.md)
 
 ### Objetivos del bloque
 
@@ -60,15 +64,28 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 - Entender permisos, identidad y segmentación básica de red.
 - Distinguir patrones stateless de cargas con identidad estable.
 - Comprender el salto desde YAML y Helm hacia promoción por entornos y automatización.
+- Practicar persistencia con una base de datos más realista.
+- Desarrollar reflejos de diagnóstico, endurecimiento y lectura operativa del clúster.
 
-## Bloque 5: tutoriales guiados
+## Bloque 5: automatización y entrega
+
+1. [Introducción a CI/CD](ci-cd/01-introduccion-ci-cd.md)
+2. [Workflows del repositorio](ci-cd/02-workflows-del-repo.md)
+
+### Objetivos del bloque
+
+- Entender qué se puede validar automáticamente antes de desplegar.
+- Leer workflows pequeños sin que parezcan magia.
+- Relacionar Compose, Docker, Helm y YAML con una CI mínima y didáctica.
+
+## Bloque 6: tutoriales guiados
 
 - [Tutorial detallado de Docker](docker/07-tutorial-docker-paso-a-paso.md)
 - [Tutorial detallado de Kubernetes](kubernetes/08-tutorial-kubernetes-paso-a-paso.md)
 
 Estos tutoriales sirven como recorrido continuo y practico. La idea es que no solo leas conceptos sueltos, sino que completes una secuencia de comandos y verificaciones de principio a fin.
 
-## Bloque 6: ejemplos y laboratorio
+## Bloque 7: ejemplos y laboratorio
 
 ### Docker
 
@@ -77,12 +94,17 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 - `examples/docker/python-api/`
 - `examples/docker/compose-web-api/`
 
+### Helm
+
+- `examples/helm/fullstack-demo/`
+
 ### Kubernetes
 
 - `examples/k8s/fullstack-demo/`
 - `examples/k8s/helm-demo/`
 - `examples/k8s/hola-nginx/`
 - `examples/k8s/network-policy-demo/`
+- `examples/k8s/postgres-demo/`
 - `examples/k8s/python-api/`
 - `examples/k8s/rbac-demo/`
 - `examples/k8s/scaling-demo/`
@@ -92,7 +114,7 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 - `examples/k8s/probes-demo/`
 - `examples/k8s/storage-demo/`
 
-## Bloque 7: notebooks de utilidades
+## Bloque 8: notebooks de utilidades
 
 - `notebooks/01_generador_dockerfile.ipynb`
 - `notebooks/02_generador_manifiestos_k8s.ipynb`
@@ -100,7 +122,13 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 - `notebooks/04_generador_configmaps_y_secrets.ipynb`
 - `notebooks/05_generador_pvc_y_resources.ipynb`
 
-## Bloque 8: roadmap del repositorio
+## Bloque 9: retos prácticos
+
+- [Retos prácticos](05-retos-practicos.md)
+
+Este bloque sirve para consolidar el aprendizaje rompiendo y reparando ejemplos del repositorio en lugar de limitarse a repetir comandos.
+
+## Bloque 10: roadmap del repositorio
 
 - [Plan de expansión](plan-expansion.md)
 

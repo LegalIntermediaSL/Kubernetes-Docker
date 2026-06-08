@@ -41,14 +41,26 @@ Este material está pensado para:
 19. [RBAC, NetworkPolicies y aislamiento](docs/kubernetes/12-rbac-network-policies-y-aislamiento.md)
 20. [StatefulSet, HPA y patrones de escalado](docs/kubernetes/13-statefulsets-hpa-y-patrones-de-escalado.md)
 21. [Entornos, CI/CD y GitOps](docs/kubernetes/14-entornos-ci-cd-y-gitops.md)
-22. [Primer proyecto práctico](docs/03-primer-proyecto.md)
-23. [Proyecto multiservicio](docs/04-proyecto-multiservicio.md)
-24. [Temario completo](docs/temario-completo.md)
+22. [Postgres, PVC e inicialización](docs/kubernetes/15-postgres-pvc-y-inicializacion.md)
+23. [Cookbook de troubleshooting](docs/kubernetes/16-cookbook-de-troubleshooting.md)
+24. [Seguridad aplicada y hardening](docs/kubernetes/17-seguridad-aplicada-y-hardening.md)
+25. [Observabilidad práctica](docs/kubernetes/18-observabilidad-practica.md)
+26. [Introducción a CI/CD](docs/ci-cd/01-introduccion-ci-cd.md)
+27. [Workflows del repositorio](docs/ci-cd/02-workflows-del-repo.md)
+28. [Primer proyecto práctico](docs/03-primer-proyecto.md)
+29. [Proyecto multiservicio](docs/04-proyecto-multiservicio.md)
+30. [Retos prácticos](docs/05-retos-practicos.md)
+31. [Temario completo](docs/temario-completo.md)
 
 ## Estructura del repositorio
 
 ```text
 .
+├── .github/
+│   └── workflows/
+│       ├── ci.yml
+│       ├── docker-build.yml
+│       └── helm-validate.yml
 ├── bitacora.md
 ├── changelog.md
 ├── docs/
@@ -57,7 +69,11 @@ Este material está pensado para:
 │   ├── 02-kubernetes-fundamentos.md
 │   ├── 03-primer-proyecto.md
 │   ├── 04-proyecto-multiservicio.md
+│   ├── 05-retos-practicos.md
 │   ├── temario-completo.md
+│   ├── ci-cd/
+│   │   ├── 01-introduccion-ci-cd.md
+│   │   └── 02-workflows-del-repo.md
 │   ├── docker/
 │   │   ├── 02-arquitectura-y-cli.md
 │   │   ├── 03-dockerfiles-y-buenas-practicas.md
@@ -77,7 +93,11 @@ Este material está pensado para:
 │       ├── 11-probes-recursos-y-scheduling.md
 │       ├── 12-rbac-network-policies-y-aislamiento.md
 │       ├── 13-statefulsets-hpa-y-patrones-de-escalado.md
-│       └── 14-entornos-ci-cd-y-gitops.md
+│       ├── 14-entornos-ci-cd-y-gitops.md
+│       ├── 15-postgres-pvc-y-inicializacion.md
+│       ├── 16-cookbook-de-troubleshooting.md
+│       ├── 17-seguridad-aplicada-y-hardening.md
+│       └── 18-observabilidad-practica.md
 ├── notebooks/
 │   ├── 01_generador_dockerfile.ipynb
 │   ├── 02_generador_manifiestos_k8s.ipynb
@@ -91,6 +111,8 @@ Este material está pensado para:
     │   ├── fullstack-demo/
     │   ├── python-api/
     │   └── compose-web-api/
+    ├── helm/
+    │   └── fullstack-demo/
     └── k8s/
         ├── fullstack-demo/
         ├── helm-demo/
@@ -100,6 +122,7 @@ Este material está pensado para:
         ├── job-cronjob/
         ├── network-policy-demo/
         ├── probes-demo/
+        ├── postgres-demo/
         ├── python-api/
         ├── rbac-demo/
         ├── scaling-demo/
@@ -123,6 +146,8 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - Ejemplos de aplicaciones
 - Manifiestos de Kubernetes más completos
 - Proyectos prácticos comparables entre Docker Compose y Kubernetes
+- Charts Helm listos para render y personalizar por entorno
+- Workflows de CI/CD fáciles de leer y adaptar
 
 ## Módulos principales
 
@@ -146,6 +171,8 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - Probes, recursos, seguridad y troubleshooting
 - Helm, PV/PVC y laboratorios de scheduling
 - RBAC, segmentación de red y patrones de escalado
+- Persistencia con PostgreSQL, inicialización y `readinessProbe`
+- Cookbook de troubleshooting y observabilidad operativa
 - Entornos, CI/CD y GitOps como temas de nivel superior
 - Tutorial guiado desde clúster local hasta despliegues más completos
 - Proyecto fullstack comparable con Docker Compose
@@ -155,7 +182,15 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - Notebooks para generar Dockerfiles
 - Notebooks para construir manifiestos YAML
 - Notebooks para estimar capacidad y requests
+- Retos prácticos para modificar, romper y depurar laboratorios
 - Guía de uso en `notebooks/README.md`
+
+### Automatización
+
+- Workflows de GitHub Actions para validación general del repo
+- Build de imágenes Docker principales
+- Lint y render de charts Helm
+- Documentación específica del bloque de CI/CD
 
 ## Material visual
 
@@ -165,6 +200,8 @@ Varios módulos del repositorio incluyen diagramas `Mermaid` para explicar:
 - La arquitectura de Docker y Docker Compose
 - La arquitectura del clúster Kubernetes
 - El tráfico entre `Service`, `Ingress` y `Pods`
+- La relación entre `PVC`, `Deployment` y base de datos
+- El aislamiento con RBAC y `NetworkPolicy`
 - El recorrido completo del primer proyecto práctico
 - Los tutoriales paso a paso de Docker y Kubernetes
 

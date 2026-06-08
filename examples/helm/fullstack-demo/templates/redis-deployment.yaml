@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "fullstack-demo.fullname" . }}-redis
+  labels:
+{{ include "fullstack-demo.labels" . | indent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "fullstack-demo.fullname" . }}-redis
+  template:
+    metadata:
+      labels:
+        app: {{ include "fullstack-demo.fullname" . }}-redis
+    spec:
+      containers:
+        - name: redis
+          image: "{{ .Values.redis.image.repository }}:{{ .Values.redis.image.tag }}"
+          imagePullPolicy: {{ .Values.redis.image.pullPolicy }}
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "fullstack-demo.fullname" . }}-secret
+                  key: REDIS_PASSWORD
+          command:
+            - sh
+            - -c
+            - redis-server --appendonly yes --requirepass "$REDIS_PASSWORD"
+          ports:
+            - containerPort: 6379

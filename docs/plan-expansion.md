@@ -58,6 +58,11 @@ Hoy el repositorio ya tiene:
 - Tutorial detallado de Kubernetes.
 - Ejemplos de `nginx`, API Python, Docker Compose, ConfigMap, Secret, Ingress, Job y CronJob.
 - Un proyecto multiservicio con frontend, API y Redis en Compose y en Kubernetes.
+- Un chart Helm del proyecto multiservicio con valores por entorno.
+- Un laboratorio con PostgreSQL, `PersistentVolumeClaim` e inicializacion por `ConfigMap`.
+- Un cookbook de troubleshooting, un bloque de hardening y un bloque de observabilidad practica.
+- Workflows de CI/CD para validar YAML, Compose, Python, builds Docker y charts Helm.
+- Un documento de retos practicos para reforzar la parte aplicada.
 - Notebooks de utilidades.
 - Diagramas Mermaid en módulos clave.
 - Una bitácora, changelog y una primera estructura de roadmap.
@@ -70,6 +75,9 @@ Hoy el repositorio ya tiene:
 - Fundamentos de Kubernetes.
 - Módulos intermedios sobre arquitectura, redes, storage y troubleshooting.
 - Tutoriales guiados de Docker y Kubernetes.
+- Bloque superior sobre RBAC, `NetworkPolicy`, escalado, persistencia, observabilidad y hardening.
+- Bloque de CI/CD con workflows del propio repositorio.
+- Retos prácticos por nivel.
 
 ### Ejemplos Docker
 
@@ -86,12 +94,25 @@ Hoy el repositorio ya tiene:
 - `configmap-secret`
 - `ingress-demo`
 - `job-cronjob`
+- `helm-demo`
+- `network-policy-demo`
+- `postgres-demo`
+- `probes-demo`
+- `rbac-demo`
+- `scaling-demo`
+- `storage-demo`
+
+### Ejemplos Helm
+
+- `fullstack-demo`
 
 ### Utilidades
 
 - Generador simple de Dockerfiles.
 - Generador simple de manifiestos Kubernetes.
 - Planificador simple de recursos.
+- Generador simple de `ConfigMap` y `Secret`.
+- Generador simple de `PVC` y bloques de recursos.
 
 ## Perfiles de usuario del curso
 
@@ -513,10 +534,9 @@ Enseñar cómo automatizar builds, validaciones y despliegues sin convertir el c
 
 - `.github/workflows/ci.yml`
 - `.github/workflows/docker-build.yml`
-- `.github/workflows/k8s-validate.yml`
+- `.github/workflows/helm-validate.yml`
 - `docs/ci-cd/01-introduccion-ci-cd.md`
-- `docs/ci-cd/02-github-actions-para-contenedores.md`
-- `docs/ci-cd/03-validacion-de-yaml-y-charts.md`
+- `docs/ci-cd/02-workflows-del-repo.md`
 
 ### Validaciones mínimas deseadas
 
@@ -577,9 +597,10 @@ Cubrir prácticas razonables de operación, observabilidad y seguridad sin volve
 
 ### Archivos o áreas a añadir
 
-- `docs/docker/09-seguridad-de-contenedores.md`
-- `docs/kubernetes/13-network-policies-y-rbac.md`
-- `docs/kubernetes/14-observabilidad-operativa.md`
+- `docs/kubernetes/12-rbac-network-policies-y-aislamiento.md`
+- `docs/kubernetes/16-cookbook-de-troubleshooting.md`
+- `docs/kubernetes/17-seguridad-aplicada-y-hardening.md`
+- `docs/kubernetes/18-observabilidad-practica.md`
 - `examples/k8s/network-policy-demo/`
 - `examples/k8s/rbac-demo/`
 

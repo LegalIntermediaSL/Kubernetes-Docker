@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "fullstack-demo.fullname" . }}-web
+  labels:
+{{ include "fullstack-demo.labels" . | indent 4 }}
+spec:
+  replicas: {{ .Values.web.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "fullstack-demo.fullname" . }}-web
+  template:
+    metadata:
+      labels:
+        app: {{ include "fullstack-demo.fullname" . }}-web
+    spec:
+      containers:
+        - name: web
+          image: "{{ .Values.web.image.repository }}:{{ .Values.web.image.tag }}"
+          imagePullPolicy: {{ .Values.web.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.web.service.targetPort }}

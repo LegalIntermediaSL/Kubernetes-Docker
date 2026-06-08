@@ -1,0 +1,24 @@
+name: docker-build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build hello nginx
+        run: docker build -t hola-nginx:ci examples/docker/hola-nginx
+
+      - name: Build python api
+        run: docker build -t python-api:ci examples/docker/python-api
+
+      - name: Build fullstack api
+        run: docker build -t fullstack-api:ci examples/docker/fullstack-demo/api
+
+      - name: Build fullstack web
+        run: docker build -t fullstack-web:ci examples/docker/fullstack-demo/web

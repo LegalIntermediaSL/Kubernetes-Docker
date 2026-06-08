@@ -1,0 +1,60 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validation dependencies
+        run: pip install pyyaml
+
+      - name: Validate notebook JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for path in sorted(Path("notebooks").glob("*.ipynb")):
+              json.loads(path.read_text())
+              print("OK", path)
+          PY
+
+      - name: Validate Kubernetes YAML examples
+        run: |
+          python - <<'PY'
+          import yaml
+          from pathlib import Path
+          for path in sorted(Path("examples/k8s").rglob("*.yaml")):
+              if "templates" in path.parts:
+                  continue
+              list(yaml.safe_load_all(path.read_text()))
+              print("OK", path)
+          PY
+
+      - name: Validate Docker Compose examples
+        run: |
+          if docker compose version > /dev/null 2>&1; then
+            COMPOSE="docker compose"
+          elif docker-compose version > /dev/null 2>&1; then
+            COMPOSE="docker-compose"
+          else
+            echo "Docker Compose is not available" >&2
+            exit 1
+          fi
+          $COMPOSE -f examples/docker/compose-web-api/docker-compose.yml config > /dev/null
+          $COMPOSE -f examples/docker/fullstack-demo/docker-compose.yml config > /dev/null
+
+      - name: Validate Python examples
+        run: |
+          python -m py_compile examples/docker/python-api/app.py
+          python -m py_compile examples/docker/fullstack-demo/api/app.py
