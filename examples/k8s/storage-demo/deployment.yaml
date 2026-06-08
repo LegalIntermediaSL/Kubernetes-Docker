@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storage-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storage-demo
+  template:
+    metadata:
+      labels:
+        app: storage-demo
+    spec:
+      containers:
+        - name: storage-demo
+          image: python:3.12-slim
+          command: ["python", "-c"]
+          args:
+            - |
+              from http.server import BaseHTTPRequestHandler, HTTPServer
+              from pathlib import Path
+
+              data_file = Path("/data/visitas.txt")
+              data_file.parent.mkdir(parents=True, exist_ok=True)
+              if not data_file.exists():
+                  data_file.write_text("0", encoding="utf-8")
+
+              class Handler(BaseHTTPRequestHandler):
+                  def do_GET(self):
+                      if self.path == "/health":
+                          body = "ok\n"
+                      else:
+                          current = int(data_file.read_text(encoding="utf-8").strip() or "0")
+                          current += 1
+                          data_file.write_text(str(current), encoding="utf-8")
+                          body = (
+                              f"visitas={current}\n"
+                              f"archivo={data_file}\n"
+                          )
+                      self.send_response(200)
+                      self.send_header("Content-type", "text/plain; charset=utf-8")
+                      self.end_headers()
+                      self.wfile.write(body.encode("utf-8"))
+
+              HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: app-data
+              mountPath: /data
+      volumes:
+        - name: app-data
+          persistentVolumeClaim:
+            claimName: storage-demo-pvc

@@ -394,3 +394,12 @@ kind delete cluster --name curso-k8s
 ## Cierre
 
 Si ya puedes recorrer este tutorial con soltura, el siguiente salto natural es combinar ambos mundos en una aplicacion mas grande o entrar en Helm, CI/CD e infraestructura declarativa.
+
+## Siguientes módulos avanzados
+
+Después de este tutorial, profundiza con:
+
+- [Helm y plantillas](09-helm-y-plantillas.md)
+- [Storage, PV y PVC](10-storage-pv-pvc.md)
+- [Probes, recursos y scheduling](11-probes-recursos-y-scheduling.md)
+- [Proyecto multiservicio](../04-proyecto-multiservicio.md)

@@ -137,3 +137,10 @@ Compose es muy útil en local, pero no reemplaza un orquestador como Kubernetes 
 2. Comprueba que la API responde en `http://localhost:8000/health`.
 3. Comprueba que `nginx` responde en `http://localhost:8080`.
 4. Añade una variable de entorno nueva y vuelve a levantar la stack.
+
+## Siguiente laboratorio práctico
+
+Cuando este ejemplo te resulte cómodo, da el salto a un caso más realista:
+
+- `examples/docker/fullstack-demo/`
+- [Proyecto multiservicio](../04-proyecto-multiservicio.md)

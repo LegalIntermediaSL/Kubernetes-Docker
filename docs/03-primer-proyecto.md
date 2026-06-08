@@ -132,8 +132,10 @@ sequenceDiagram
 
 Si este flujo ya te funciona, los siguientes laboratorios naturales dentro del repositorio son:
 
+- `examples/docker/fullstack-demo/`
 - `examples/docker/python-api/`
 - `examples/docker/compose-web-api/`
+- `examples/k8s/fullstack-demo/`
 - `examples/k8s/configmap-secret/`
 - `examples/k8s/ingress-demo/`
 - `examples/k8s/job-cronjob/`

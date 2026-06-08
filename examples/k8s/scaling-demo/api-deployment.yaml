@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autoscale-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: autoscale-api
+  template:
+    metadata:
+      labels:
+        app: autoscale-api
+    spec:
+      containers:
+        - name: autoscale-api
+          image: fullstack-api:local
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: APP_NAME
+              value: Autoscale API
+            - name: APP_ENV
+              value: scaling-demo
+            - name: PORT
+              value: "8000"
+            - name: REDIS_HOST
+              value: redis
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_PASSWORD
+              value: redis-demo
+            - name: REDIS_KEY
+              value: scaling:visits
+            - name: RESET_TOKEN
+              value: reset-demo
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"

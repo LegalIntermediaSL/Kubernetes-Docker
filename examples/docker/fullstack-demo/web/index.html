@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fullstack Demo</title>
+    <style>
+      :root {
+        --bg: #f3efe4;
+        --panel: #fffaf2;
+        --ink: #172030;
+        --accent: #b45309;
+        --accent-dark: #7c2d12;
+        --line: #dfd6c5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background:
+          radial-gradient(circle at top left, rgba(180, 83, 9, 0.15), transparent 28%),
+          linear-gradient(180deg, #f8f4eb 0%, var(--bg) 100%);
+        color: var(--ink);
+      }
+
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 2rem 1.25rem 3rem;
+      }
+
+      header {
+        margin-bottom: 1.5rem;
+      }
+
+      h1 {
+        margin: 0 0 0.5rem;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1;
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      .grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 1.25rem;
+        box-shadow: 0 20px 40px rgba(23, 32, 48, 0.06);
+      }
+
+      .hero {
+        display: grid;
+        gap: 1rem;
+        align-items: center;
+        grid-template-columns: 1.4fr 1fr;
+        margin-bottom: 1rem;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(180, 83, 9, 0.12);
+        color: var(--accent-dark);
+        font-size: 0.85rem;
+        letter-spacing: 0.03em;
+      }
+
+      .metric {
+        font-size: clamp(2.2rem, 6vw, 4rem);
+        font-weight: 700;
+        color: var(--accent-dark);
+      }
+
+      button {
+        cursor: pointer;
+        border: 0;
+        border-radius: 999px;
+        padding: 0.85rem 1.2rem;
+        font-size: 1rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+        color: white;
+      }
+
+      button.secondary {
+        background: white;
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+
+      code, pre {
+        font-family: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+      }
+
+      pre {
+        background: #1f2937;
+        color: #f9fafb;
+        padding: 1rem;
+        border-radius: 16px;
+        overflow-x: auto;
+      }
+
+      .actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      .small {
+        font-size: 0.95rem;
+        color: #5c6475;
+      }
+
+      @media (max-width: 720px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="card">
+          <span class="badge">Practica Fullstack</span>
+          <h1>Docker Compose y Kubernetes con la misma app</h1>
+          <p>
+            Este laboratorio conecta un frontend estático, una API Flask y un
+            Redis compartido para practicar red, configuración y persistencia
+            ligera en ambos entornos.
+          </p>
+          <div class="actions">
+            <button id="addVisit">Registrar visita</button>
+            <button class="secondary" id="refresh">Actualizar panel</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="small">Contador persistido en Redis</div>
+          <div class="metric" id="visits">-</div>
+          <div class="small" id="health">Estado backend: cargando...</div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Información de la API</h2>
+          <pre id="info">Cargando...</pre>
+        </article>
+        <article class="card">
+          <h2>Qué practicar aquí</h2>
+          <ul>
+            <li>Proxy HTTP entre `nginx` y la API</li>
+            <li>Comunicación entre servicios por nombre</li>
+            <li>Variables de entorno y secretos</li>
+            <li>Persistencia de contador en Redis</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      async function getJson(url, options) {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(JSON.stringify(data));
+        }
+        return data;
+      }
+
+      async function refresh() {
+        try {
+          const [info, stats, health] = await Promise.all([
+            getJson("/api"),
+            getJson("/api/stats"),
+            getJson("/api/health")
+          ]);
+
+          document.getElementById("info").textContent = JSON.stringify(info, null, 2);
+          document.getElementById("visits").textContent = stats.visits;
+          document.getElementById("health").textContent = `Estado backend: ${health.status} | Redis: ${health.redis}`;
+        } catch (error) {
+          document.getElementById("info").textContent = error.message;
+          document.getElementById("health").textContent = "No se pudo contactar con la API";
+        }
+      }
+
+      async function addVisit() {
+        try {
+          await getJson("/api/visits", { method: "POST" });
+          await refresh();
+        } catch (error) {
+          document.getElementById("info").textContent = error.message;
+        }
+      }
+
+      document.getElementById("addVisit").addEventListener("click", addVisit);
+      document.getElementById("refresh").addEventListener("click", refresh);
+
+      refresh();
+    </script>
+  </body>
+</html>

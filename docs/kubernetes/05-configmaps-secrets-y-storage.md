@@ -116,3 +116,9 @@ Revisa `examples/k8s/configmap-secret/` para ver:
 - Se pone información sensible en ConfigMap.
 - El PVC queda en `Pending` porque no hay storage class adecuada.
 - Se espera persistencia usando `emptyDir`.
+
+## Profundización recomendada
+
+Si quieres bajar a más detalle en almacenamiento y persistencia, continúa con:
+
+- [Storage, PV y PVC](10-storage-pv-pvc.md)

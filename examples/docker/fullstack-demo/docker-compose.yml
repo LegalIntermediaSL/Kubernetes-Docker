@@ -1,0 +1,36 @@
+services:
+  redis:
+    image: redis:7-alpine
+    environment:
+      REDIS_PASSWORD: redis-demo
+    command: sh -c 'redis-server --appendonly yes --requirepass "$$REDIS_PASSWORD"'
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  api:
+    build: ./api
+    depends_on:
+      - redis
+    environment:
+      APP_NAME: Fullstack Demo
+      APP_ENV: compose
+      PORT: 8000
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: redis-demo
+      REDIS_KEY: fullstack:visits
+      RESET_TOKEN: reset-demo
+    ports:
+      - "8000:8000"
+
+  web:
+    build: ./web
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+
+volumes:
+  redis-data:

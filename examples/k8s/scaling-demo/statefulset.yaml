@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: demo-store
+spec:
+  serviceName: demo-store
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-store
+  template:
+    metadata:
+      labels:
+        app: demo-store
+    spec:
+      containers:
+        - name: web
+          image: nginx:alpine
+          ports:
+            - containerPort: 80

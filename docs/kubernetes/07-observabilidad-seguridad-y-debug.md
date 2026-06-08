@@ -109,3 +109,9 @@ kubectl rollout status deployment/<name>
 ## Cierre del bloque
 
 Si puedes diagnosticar un `CrashLoopBackOff`, corregir un selector roto en un service y explicar la diferencia entre `readiness` y `liveness`, ya tienes una base muy sólida para trabajar con Kubernetes real.
+
+## Profundización recomendada
+
+Para practicar estos conceptos con laboratorios más concretos, continúa con:
+
+- [Probes, recursos y scheduling](11-probes-recursos-y-scheduling.md)

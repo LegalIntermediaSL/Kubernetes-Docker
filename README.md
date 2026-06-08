@@ -35,8 +35,15 @@ Este material está pensado para:
 13. [Services, Ingress y red](docs/kubernetes/06-services-ingress-y-red.md)
 14. [Observabilidad, seguridad y depuración](docs/kubernetes/07-observabilidad-seguridad-y-debug.md)
 15. [Tutorial detallado de Kubernetes](docs/kubernetes/08-tutorial-kubernetes-paso-a-paso.md)
-16. [Primer proyecto práctico](docs/03-primer-proyecto.md)
-17. [Temario completo](docs/temario-completo.md)
+16. [Helm y plantillas](docs/kubernetes/09-helm-y-plantillas.md)
+17. [Storage, PV y PVC](docs/kubernetes/10-storage-pv-pvc.md)
+18. [Probes, recursos y scheduling](docs/kubernetes/11-probes-recursos-y-scheduling.md)
+19. [RBAC, NetworkPolicies y aislamiento](docs/kubernetes/12-rbac-network-policies-y-aislamiento.md)
+20. [StatefulSet, HPA y patrones de escalado](docs/kubernetes/13-statefulsets-hpa-y-patrones-de-escalado.md)
+21. [Entornos, CI/CD y GitOps](docs/kubernetes/14-entornos-ci-cd-y-gitops.md)
+22. [Primer proyecto práctico](docs/03-primer-proyecto.md)
+23. [Proyecto multiservicio](docs/04-proyecto-multiservicio.md)
+24. [Temario completo](docs/temario-completo.md)
 
 ## Estructura del repositorio
 
@@ -49,6 +56,7 @@ Este material está pensado para:
 │   ├── 01-docker-fundamentos.md
 │   ├── 02-kubernetes-fundamentos.md
 │   ├── 03-primer-proyecto.md
+│   ├── 04-proyecto-multiservicio.md
 │   ├── temario-completo.md
 │   ├── docker/
 │   │   ├── 02-arquitectura-y-cli.md
@@ -63,23 +71,39 @@ Este material está pensado para:
 │       ├── 05-configmaps-secrets-y-storage.md
 │       ├── 06-services-ingress-y-red.md
 │       ├── 07-observabilidad-seguridad-y-debug.md
-│       └── 08-tutorial-kubernetes-paso-a-paso.md
+│       ├── 08-tutorial-kubernetes-paso-a-paso.md
+│       ├── 09-helm-y-plantillas.md
+│       ├── 10-storage-pv-pvc.md
+│       ├── 11-probes-recursos-y-scheduling.md
+│       ├── 12-rbac-network-policies-y-aislamiento.md
+│       ├── 13-statefulsets-hpa-y-patrones-de-escalado.md
+│       └── 14-entornos-ci-cd-y-gitops.md
 ├── notebooks/
 │   ├── 01_generador_dockerfile.ipynb
 │   ├── 02_generador_manifiestos_k8s.ipynb
 │   ├── 03_planificador_recursos_k8s.ipynb
+│   ├── 04_generador_configmaps_y_secrets.ipynb
+│   ├── 05_generador_pvc_y_resources.ipynb
 │   └── README.md
 └── examples/
     ├── docker/
     │   ├── hola-nginx/
+    │   ├── fullstack-demo/
     │   ├── python-api/
     │   └── compose-web-api/
     └── k8s/
+        ├── fullstack-demo/
+        ├── helm-demo/
         ├── hola-nginx/
-        ├── python-api/
         ├── configmap-secret/
         ├── ingress-demo/
-        └── job-cronjob/
+        ├── job-cronjob/
+        ├── network-policy-demo/
+        ├── probes-demo/
+        ├── python-api/
+        ├── rbac-demo/
+        ├── scaling-demo/
+        └── storage-demo/
 ```
 
 ## Requisitos recomendados
@@ -98,6 +122,7 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - Ejercicios guiados
 - Ejemplos de aplicaciones
 - Manifiestos de Kubernetes más completos
+- Proyectos prácticos comparables entre Docker Compose y Kubernetes
 
 ## Módulos principales
 
@@ -110,6 +135,7 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - Docker Compose para aplicaciones multi-servicio
 - Registros, seguridad, escaneo y depuración
 - Tutorial guiado paso a paso con ejercicios y verificación
+- Proyecto fullstack con frontend, API y Redis
 
 ### Kubernetes
 
@@ -118,7 +144,11 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - ConfigMaps, Secrets, volúmenes y almacenamiento
 - Services, Ingress y comunicación interna
 - Probes, recursos, seguridad y troubleshooting
+- Helm, PV/PVC y laboratorios de scheduling
+- RBAC, segmentación de red y patrones de escalado
+- Entornos, CI/CD y GitOps como temas de nivel superior
 - Tutorial guiado desde clúster local hasta despliegues más completos
+- Proyecto fullstack comparable con Docker Compose
 
 ### Utilidades
 

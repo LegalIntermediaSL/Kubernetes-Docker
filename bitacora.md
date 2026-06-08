@@ -20,6 +20,13 @@ Registro de trabajo, decisiones y próximos pasos del repositorio.
 - Se desarrolló un plan de expansión detallado del repositorio con fases, prioridades, entregables y criterios de aceptación.
 - Se amplió ese plan con mucho más detalle: alcance, perfiles de usuario, riesgos, métricas, hitos, roadmap de ejemplos, notebooks, validación y sprints.
 - Se desarrolló aún más el contenido del plan con malla temática futura, banco de laboratorios, ejercicios por nivel, rutas por semanas, herramientas recomendadas y matrices de capacidad/verificación.
+- Se materializó buena parte de la Fase 1 con tres módulos nuevos: Helm, storage y probes/recursos/scheduling.
+- Se añadieron laboratorios `helm-demo`, `storage-demo` y `probes-demo`.
+- Se añadieron dos notebooks nuevos para generar `ConfigMap`, `Secret`, `PVC` y bloques de recursos.
+- Se amplió la parte práctica con un proyecto multiservicio completo en Compose y en Kubernetes.
+- Se añadió una guía comparativa de proyecto fullstack en `docs/04-proyecto-multiservicio.md`.
+- Se abrió un bloque superior del curso con RBAC, `NetworkPolicy`, `StatefulSet`, HPA, entornos, CI/CD y GitOps.
+- Se añadieron laboratorios `rbac-demo`, `network-policy-demo` y `scaling-demo`.
 
 ### Decisiones tomadas
 
@@ -30,6 +37,7 @@ Registro de trabajo, decisiones y próximos pasos del repositorio.
 ### Próximos pasos sugeridos
 
 - Ejecutar la Fase 1 del plan de expansión.
-- Añadir un bloque de Helm y plantillas.
-- Añadir ejemplos con `PersistentVolumeClaim` y almacenamiento real.
+- Consolidar o ampliar los laboratorios recién añadidos.
+- Añadir ejemplos con `PersistentVolumeClaim` más cercanos a aplicaciones reales.
 - Incorporar ejercicios de seguridad, probes y recursos.
+- Empaquetar el proyecto multiservicio con Helm.

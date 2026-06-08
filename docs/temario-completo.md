@@ -8,6 +8,7 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 2. [Fundamentos de Docker](01-docker-fundamentos.md)
 3. [Fundamentos de Kubernetes](02-kubernetes-fundamentos.md)
 4. [Primer proyecto práctico](03-primer-proyecto.md)
+5. [Proyecto multiservicio](04-proyecto-multiservicio.md)
 
 ## Bloque 2: Docker en profundidad
 
@@ -33,6 +34,9 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 4. [Services, Ingress y red](kubernetes/06-services-ingress-y-red.md)
 5. [Observabilidad, seguridad y depuración](kubernetes/07-observabilidad-seguridad-y-debug.md)
 6. [Tutorial detallado de Kubernetes](kubernetes/08-tutorial-kubernetes-paso-a-paso.md)
+7. [Helm y plantillas](kubernetes/09-helm-y-plantillas.md)
+8. [Storage, PV y PVC](kubernetes/10-storage-pv-pvc.md)
+9. [Probes, recursos y scheduling](kubernetes/11-probes-recursos-y-scheduling.md)
 
 ### Objetivos del bloque
 
@@ -41,37 +45,62 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 - Gestionar configuración externa y recursos persistentes.
 - Exponer servicios con topologías de red claras.
 - Diagnosticar pods, eventos, logs y errores de scheduling.
+- Entender cómo empaquetar con Helm y cómo persisten realmente los datos.
+- Explicar por qué un pod no queda `Ready`, reinicia o no puede planificarse.
 
-## Bloque 4: tutoriales guiados
+## Bloque 4: temas de nivel superior
+
+1. [RBAC, NetworkPolicies y aislamiento](kubernetes/12-rbac-network-policies-y-aislamiento.md)
+2. [StatefulSet, HPA y patrones de escalado](kubernetes/13-statefulsets-hpa-y-patrones-de-escalado.md)
+3. [Entornos, CI/CD y GitOps](kubernetes/14-entornos-ci-cd-y-gitops.md)
+
+### Objetivos del bloque
+
+- Conectar el bloque intermedio con preocupaciones reales de plataforma.
+- Entender permisos, identidad y segmentación básica de red.
+- Distinguir patrones stateless de cargas con identidad estable.
+- Comprender el salto desde YAML y Helm hacia promoción por entornos y automatización.
+
+## Bloque 5: tutoriales guiados
 
 - [Tutorial detallado de Docker](docker/07-tutorial-docker-paso-a-paso.md)
 - [Tutorial detallado de Kubernetes](kubernetes/08-tutorial-kubernetes-paso-a-paso.md)
 
 Estos tutoriales sirven como recorrido continuo y practico. La idea es que no solo leas conceptos sueltos, sino que completes una secuencia de comandos y verificaciones de principio a fin.
 
-## Bloque 5: ejemplos y laboratorio
+## Bloque 6: ejemplos y laboratorio
 
 ### Docker
 
+- `examples/docker/fullstack-demo/`
 - `examples/docker/hola-nginx/`
 - `examples/docker/python-api/`
 - `examples/docker/compose-web-api/`
 
 ### Kubernetes
 
+- `examples/k8s/fullstack-demo/`
+- `examples/k8s/helm-demo/`
 - `examples/k8s/hola-nginx/`
+- `examples/k8s/network-policy-demo/`
 - `examples/k8s/python-api/`
+- `examples/k8s/rbac-demo/`
+- `examples/k8s/scaling-demo/`
 - `examples/k8s/configmap-secret/`
 - `examples/k8s/ingress-demo/`
 - `examples/k8s/job-cronjob/`
+- `examples/k8s/probes-demo/`
+- `examples/k8s/storage-demo/`
 
-## Bloque 6: notebooks de utilidades
+## Bloque 7: notebooks de utilidades
 
 - `notebooks/01_generador_dockerfile.ipynb`
 - `notebooks/02_generador_manifiestos_k8s.ipynb`
 - `notebooks/03_planificador_recursos_k8s.ipynb`
+- `notebooks/04_generador_configmaps_y_secrets.ipynb`
+- `notebooks/05_generador_pvc_y_resources.ipynb`
 
-## Bloque 7: roadmap del repositorio
+## Bloque 8: roadmap del repositorio
 
 - [Plan de expansión](plan-expansion.md)
 
@@ -110,3 +139,5 @@ Al final del temario deberías poder:
 - Crear manifiestos YAML básicos sin depender de un generador.
 - Entender por qué un pod no arranca o por qué un service no enruta.
 - Diseñar un despliegue simple con configuración externa y health checks.
+- Comparar una misma aplicación multi-servicio en Compose y Kubernetes.
+- Explicar qué cambia al pasar del bloque intermedio a temas de plataforma de nivel superior.

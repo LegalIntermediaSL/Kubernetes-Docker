@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: probes-ok
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: probes-ok
+  template:
+    metadata:
+      labels:
+        app: probes-ok
+    spec:
+      containers:
+        - name: probes-ok
+          image: python:3.12-slim
+          env:
+            - name: BOOT_DELAY
+              value: "12"
+          command: ["python", "-c"]
+          args:
+            - |
+              import os
+              import time
+              from http.server import BaseHTTPRequestHandler, HTTPServer
+
+              start = time.time()
+              boot_delay = int(os.getenv("BOOT_DELAY", "10"))
+
+              class Handler(BaseHTTPRequestHandler):
+                  def do_GET(self):
+                      uptime = int(time.time() - start)
+                      if self.path == "/health":
+                          code = 200
+                          body = f"healthy uptime={uptime}\n"
+                      elif self.path in ("/ready", "/startup"):
+                          if uptime >= boot_delay:
+                              code = 200
+                              body = f"ready uptime={uptime}\n"
+                          else:
+                              code = 503
+                              body = f"warming-up uptime={uptime}\n"
+                      else:
+                          code = 200
+                          body = f"demo uptime={uptime}\n"
+                      self.send_response(code)
+                      self.send_header("Content-type", "text/plain; charset=utf-8")
+                      self.end_headers()
+                      self.wfile.write(body.encode("utf-8"))
+
+              HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
+          ports:
+            - containerPort: 8080
+          startupProbe:
+            httpGet:
+              path: /startup
+              port: 8080
+            periodSeconds: 3
+            failureThreshold: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            periodSeconds: 5
+            initialDelaySeconds: 2
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            periodSeconds: 10
+            initialDelaySeconds: 5
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"

@@ -115,3 +115,6 @@ Después de esta base, sigue con:
 - [Services, Ingress y red](kubernetes/06-services-ingress-y-red.md)
 - [Observabilidad, seguridad y depuración](kubernetes/07-observabilidad-seguridad-y-debug.md)
 - [Tutorial detallado de Kubernetes](kubernetes/08-tutorial-kubernetes-paso-a-paso.md)
+- [Helm y plantillas](kubernetes/09-helm-y-plantillas.md)
+- [Storage, PV y PVC](kubernetes/10-storage-pv-pvc.md)
+- [Probes, recursos y scheduling](kubernetes/11-probes-recursos-y-scheduling.md)

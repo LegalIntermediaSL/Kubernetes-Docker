@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: network-policy-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+      tier: api
+  template:
+    metadata:
+      labels:
+        app: api
+        tier: api
+    spec:
+      containers:
+        - name: api
+          image: nginxdemos/hello:plain-text
+          ports:
+            - containerPort: 80

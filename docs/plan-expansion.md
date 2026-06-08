@@ -57,6 +57,7 @@ Hoy el repositorio ya tiene:
 - Tutorial detallado de Docker.
 - Tutorial detallado de Kubernetes.
 - Ejemplos de `nginx`, API Python, Docker Compose, ConfigMap, Secret, Ingress, Job y CronJob.
+- Un proyecto multiservicio con frontend, API y Redis en Compose y en Kubernetes.
 - Notebooks de utilidades.
 - Diagramas Mermaid en módulos clave.
 - Una bitácora, changelog y una primera estructura de roadmap.
@@ -72,12 +73,14 @@ Hoy el repositorio ya tiene:
 
 ### Ejemplos Docker
 
+- `fullstack-demo`
 - `hola-nginx`
 - `python-api`
 - `compose-web-api`
 
 ### Ejemplos Kubernetes
 
+- `fullstack-demo`
 - `hola-nginx`
 - `python-api`
 - `configmap-secret`
@@ -756,11 +759,11 @@ Los ejemplos no deben crecer de forma arbitraria. La progresión sugerida es:
 1. `hola-nginx`
 2. `python-api`
 3. `compose-web-api`
-4. `python-api` en Kubernetes
-5. `configmap-secret`
-6. `storage-demo`
-7. `helm-demo`
-8. `fullstack-demo`
+4. `fullstack-demo`
+5. `python-api` en Kubernetes
+6. `configmap-secret`
+7. `storage-demo`
+8. `helm-demo`
 
 ## Roadmap de notebooks
 

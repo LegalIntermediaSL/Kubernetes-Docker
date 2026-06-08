@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fullstack-config
+data:
+  APP_NAME: Fullstack Demo
+  APP_ENV: kubernetes
+  PORT: "8000"
+  REDIS_HOST: redis
+  REDIS_PORT: "6379"
+  REDIS_KEY: fullstack:visits

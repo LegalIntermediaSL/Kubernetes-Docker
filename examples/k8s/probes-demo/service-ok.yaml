@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: probes-ok
+spec:
+  selector:
+    app: probes-ok
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: ClusterIP

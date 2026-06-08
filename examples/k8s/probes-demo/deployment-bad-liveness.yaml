@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: probes-bad-liveness
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: probes-bad-liveness
+  template:
+    metadata:
+      labels:
+        app: probes-bad-liveness
+    spec:
+      containers:
+        - name: probes-bad-liveness
+          image: python:3.12-slim
+          command: ["python", "-c"]
+          args:
+            - |
+              from http.server import BaseHTTPRequestHandler, HTTPServer
+
+              class Handler(BaseHTTPRequestHandler):
+                  def do_GET(self):
+                      if self.path in ("/health", "/ready"):
+                          code = 200
+                          body = "ok\n"
+                      else:
+                          code = 200
+                          body = "alive\n"
+                      self.send_response(code)
+                      self.send_header("Content-type", "text/plain; charset=utf-8")
+                      self.end_headers()
+                      self.wfile.write(body.encode("utf-8"))
+
+              HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /wrong-health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
