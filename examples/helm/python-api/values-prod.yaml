@@ -1,0 +1,21 @@
+environment: prod
+
+replicaCount: 3
+
+image:
+  pullPolicy: IfNotPresent
+
+config:
+  appEnv: prod
+
+ingress:
+  enabled: true
+  host: python-api.example.com
+
+resources:
+  requests:
+    cpu: 150m
+    memory: 192Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi

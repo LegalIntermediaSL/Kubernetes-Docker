@@ -1,0 +1,10 @@
+environment: demo
+
+replicaCount: 2
+
+config:
+  appEnv: demo
+
+ingress:
+  enabled: true
+  host: python-api-demo.local

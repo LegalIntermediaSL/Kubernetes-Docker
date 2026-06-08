@@ -1,0 +1,7 @@
+grafana:
+  adminUser: admin
+  sidecar:
+    dashboards:
+      enabled: true
+  ingress:
+    enabled: false

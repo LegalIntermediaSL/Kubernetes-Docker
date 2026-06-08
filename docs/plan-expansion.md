@@ -29,6 +29,16 @@ Si el plan se ejecuta bien, el repositorio debería permitir tres recorridos dis
 2. Un recorrido intermedio para desplegar aplicaciones reales en local.
 3. Un recorrido avanzado para acercarse a prácticas de plataforma y operación.
 
+## Estado del plan
+
+La parte principal de este plan ya esta materializada en el repositorio:
+
+- la ruta basica e intermedia ya existe
+- Helm, storage, probes, seguridad y troubleshooting ya tienen modulos propios
+- el proyecto multi-servicio ya existe en Compose, Kubernetes y Helm
+- CI/CD, publicacion y promocion por entornos ya tienen documentacion y workflows
+- las extensiones avanzadas ya cuentan con apendices y ejemplos de referencia
+
 ## Alcance
 
 ### Sí entra en el alcance
@@ -623,19 +633,18 @@ Cubrir prácticas razonables de operación, observabilidad y seguridad sin volve
 - El curso cubre al menos una estrategia simple de segmentación de red.
 - Existe una sección clara de hardening mínimo.
 
-## Backlog complementario
+## Extensiones avanzadas ya cubiertas
 
-Estos elementos no son prioridad máxima, pero pueden aportar mucho valor después:
+Los temas que originalmente aparecian como backlog complementario ya cuentan con una primera materializacion documental o de ejemplo:
 
 - GitOps introductorio
-- Argo CD o Flux como apéndice
-- Autoscaling con `HPA`
-- StatefulSets con base de datos o broker
+- Argo CD y Flux como apendice
+- `HPA` y `StatefulSet`
 - Ingress avanzado con TLS
-- Service Mesh como sección opcional
+- Service Mesh como seccion opcional
 - Troubleshooting cookbook con casos reales
-- Observabilidad con Prometheus y Grafana como bloque opcional
-- Policies con OPA Gatekeeper o Kyverno como contenido avanzado
+- Observabilidad con Prometheus y Grafana
+- Policies con OPA Gatekeeper o Kyverno
 
 ## Dependencias entre fases
 
@@ -705,6 +714,16 @@ flowchart LR
 - Observabilidad operativa.
 - Cookbook de troubleshooting.
 - Consolidación de índices, enlaces y diagramas.
+
+## Cierre del plan
+
+Con el estado actual del repositorio, el plan de expansion ya no funciona tanto como lista de pendientes inmediatos, sino como documento de trazabilidad de lo que se decidio construir y del orden pedagogico que se siguio.
+
+Lo que quede por crecer a partir de aqui ya tiende a ser:
+
+- especializacion por proveedor cloud
+- variantes mas profundas de observabilidad o seguridad
+- automatizacion mas cercana a entornos de equipo concretos
 
 ## Plan de ejecución detallado para la Fase 1
 

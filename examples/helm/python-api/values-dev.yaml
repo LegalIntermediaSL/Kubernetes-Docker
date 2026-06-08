@@ -1,0 +1,9 @@
+environment: dev
+
+replicaCount: 1
+
+config:
+  appEnv: dev
+
+ingress:
+  enabled: false

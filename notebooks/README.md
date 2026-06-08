@@ -9,6 +9,8 @@ Esta carpeta contiene cuadernos Jupyter orientados a utilidades y aprendizaje ap
 - `03_planificador_recursos_k8s.ipynb`
 - `04_generador_configmaps_y_secrets.ipynb`
 - `05_generador_pvc_y_resources.ipynb`
+- `06_generador_values_helm.ipynb`
+- `07_checklist_release_ci_cd.ipynb`
 
 ## Para qué sirven
 
@@ -16,6 +18,8 @@ Esta carpeta contiene cuadernos Jupyter orientados a utilidades y aprendizaje ap
 - Entender cómo se construye un `Dockerfile` o un manifiesto YAML.
 - Hacer estimaciones simples de capacidad y recursos.
 - Generar borradores de `ConfigMap`, `Secret`, `PVC` y recursos.
+- Preparar `values.yaml` por entorno para Helm.
+- Generar listas de verificacion para release y promocion.
 
 ## Cómo abrirlos
 

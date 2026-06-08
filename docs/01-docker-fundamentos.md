@@ -106,3 +106,5 @@ Cuando este documento ya te resulte natural, continúa con:
 - [Docker Compose](docker/05-docker-compose.md)
 - [Registro, seguridad y troubleshooting](docker/06-registry-seguridad-troubleshooting.md)
 - [Tutorial detallado de Docker](docker/07-tutorial-docker-paso-a-paso.md)
+- [Versionado y publicacion de imagenes](docker/08-versionado-y-publicacion.md)
+- [Seguridad de contenedores y hardening](docker/09-seguridad-de-contenedores-y-hardening.md)

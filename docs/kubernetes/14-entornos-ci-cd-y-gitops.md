@@ -217,5 +217,9 @@ Este módulo, junto con:
 
 - [RBAC, NetworkPolicies y aislamiento](12-rbac-network-policies-y-aislamiento.md)
 - [StatefulSet, HPA y patrones de escalado](13-statefulsets-hpa-y-patrones-de-escalado.md)
+- [Helm tutorial paso a paso](19-helm-tutorial-paso-a-paso.md)
+- [GitOps: Argo CD y Flux](21-gitops-intro-argocd-y-flux.md)
+
+ayuda a convertir el bloque intermedio en una visión más cercana a plataforma.
 
 forma la base del salto desde “Kubernetes intermedio” hacia “temas de plataforma y operación”.

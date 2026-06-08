@@ -18,6 +18,8 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 4. [Docker Compose](docker/05-docker-compose.md)
 5. [Registro, seguridad y troubleshooting](docker/06-registry-seguridad-troubleshooting.md)
 6. [Tutorial detallado de Docker](docker/07-tutorial-docker-paso-a-paso.md)
+7. [Versionado y publicacion de imagenes](docker/08-versionado-y-publicacion.md)
+8. [Seguridad de contenedores y hardening](docker/09-seguridad-de-contenedores-y-hardening.md)
 
 ### Objetivos del bloque
 
@@ -25,6 +27,8 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 - Saber construir imágenes pequeñas y mantenibles.
 - Dominar persistencia, red y ejecución de múltiples servicios.
 - Diagnosticar errores frecuentes en tiempo de build y runtime.
+- Versionar y publicar imágenes con mejor trazabilidad.
+- Entender el hardening básico de una imagen contenedorizada.
 
 ## Bloque 3: Kubernetes en profundidad
 
@@ -71,21 +75,38 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 
 1. [Introducción a CI/CD](ci-cd/01-introduccion-ci-cd.md)
 2. [Workflows del repositorio](ci-cd/02-workflows-del-repo.md)
+3. [Publicacion, promocion y releases](ci-cd/03-publicacion-promocion-y-releases.md)
 
 ### Objetivos del bloque
 
 - Entender qué se puede validar automáticamente antes de desplegar.
 - Leer workflows pequeños sin que parezcan magia.
 - Relacionar Compose, Docker, Helm y YAML con una CI mínima y didáctica.
+- Entender cómo una imagen versionada se promueve entre entornos.
 
-## Bloque 6: tutoriales guiados
+## Bloque 6: apendices avanzados
+
+1. [Helm tutorial paso a paso](kubernetes/19-helm-tutorial-paso-a-paso.md)
+2. [Ingress, TLS y exposicion avanzada](kubernetes/20-ingress-tls-y-exposicion-avanzada.md)
+3. [GitOps: Argo CD y Flux](kubernetes/21-gitops-intro-argocd-y-flux.md)
+4. [Prometheus, Grafana y metricas](kubernetes/22-observabilidad-con-prometheus-y-grafana.md)
+5. [Policies con Gatekeeper y Kyverno](kubernetes/23-policies-con-gatekeeper-y-kyverno.md)
+6. [Introduccion a service mesh](kubernetes/24-service-mesh-introduccion.md)
+
+### Objetivos del bloque
+
+- Cerrar el recorrido del curso con temas frecuentes en plataformas modernas.
+- Entender cuando un tema avanzado aporta valor y cuando aun no hace falta.
+- Dar un puente hacia GitOps, gobierno, TLS, metricas y trafico avanzado.
+
+## Bloque 7: tutoriales guiados
 
 - [Tutorial detallado de Docker](docker/07-tutorial-docker-paso-a-paso.md)
 - [Tutorial detallado de Kubernetes](kubernetes/08-tutorial-kubernetes-paso-a-paso.md)
 
 Estos tutoriales sirven como recorrido continuo y practico. La idea es que no solo leas conceptos sueltos, sino que completes una secuencia de comandos y verificaciones de principio a fin.
 
-## Bloque 7: ejemplos y laboratorio
+## Bloque 8: ejemplos y laboratorio
 
 ### Docker
 
@@ -96,39 +117,47 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 
 ### Helm
 
+- `examples/helm/python-api/`
 - `examples/helm/fullstack-demo/`
 
 ### Kubernetes
 
 - `examples/k8s/fullstack-demo/`
+- `examples/k8s/gitops-demo/`
 - `examples/k8s/helm-demo/`
 - `examples/k8s/hola-nginx/`
+- `examples/k8s/ingress-tls-demo/`
 - `examples/k8s/network-policy-demo/`
+- `examples/k8s/policy-demo/`
 - `examples/k8s/postgres-demo/`
+- `examples/k8s/prometheus-demo/`
 - `examples/k8s/python-api/`
 - `examples/k8s/rbac-demo/`
 - `examples/k8s/scaling-demo/`
+- `examples/k8s/service-mesh-demo/`
 - `examples/k8s/configmap-secret/`
 - `examples/k8s/ingress-demo/`
 - `examples/k8s/job-cronjob/`
 - `examples/k8s/probes-demo/`
 - `examples/k8s/storage-demo/`
 
-## Bloque 8: notebooks de utilidades
+## Bloque 9: notebooks de utilidades
 
 - `notebooks/01_generador_dockerfile.ipynb`
 - `notebooks/02_generador_manifiestos_k8s.ipynb`
 - `notebooks/03_planificador_recursos_k8s.ipynb`
 - `notebooks/04_generador_configmaps_y_secrets.ipynb`
 - `notebooks/05_generador_pvc_y_resources.ipynb`
+- `notebooks/06_generador_values_helm.ipynb`
+- `notebooks/07_checklist_release_ci_cd.ipynb`
 
-## Bloque 9: retos prácticos
+## Bloque 10: retos prácticos
 
 - [Retos prácticos](05-retos-practicos.md)
 
 Este bloque sirve para consolidar el aprendizaje rompiendo y reparando ejemplos del repositorio en lugar de limitarse a repetir comandos.
 
-## Bloque 10: roadmap del repositorio
+## Bloque 11: roadmap del repositorio
 
 - [Plan de expansión](plan-expansion.md)
 
@@ -169,3 +198,4 @@ Al final del temario deberías poder:
 - Diseñar un despliegue simple con configuración externa y health checks.
 - Comparar una misma aplicación multi-servicio en Compose y Kubernetes.
 - Explicar qué cambia al pasar del bloque intermedio a temas de plataforma de nivel superior.
+- Describir un flujo razonable de versionado, publicación, GitOps y gobierno básico.

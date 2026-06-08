@@ -1,0 +1,9 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: fullstack-api
+spec:
+  host: fullstack-api
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

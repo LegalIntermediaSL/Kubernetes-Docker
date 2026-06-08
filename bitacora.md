@@ -32,6 +32,12 @@ Registro de trabajo, decisiones y próximos pasos del repositorio.
 - Se añadieron nuevos módulos de cookbook de troubleshooting, seguridad aplicada y observabilidad práctica.
 - Se añadieron documentos de CI/CD y workflows reales en `.github/workflows/`.
 - Se añadió un bloque de retos prácticos para consolidar el aprendizaje por niveles.
+- Se añadieron módulos nuevos de versionado/publicacion de imágenes y hardening de contenedores en Docker.
+- Se añadió un chart Helm más completo para `python-api`, con `Ingress`, `ConfigMap`, recursos y values por entorno.
+- Se añadió un workflow de publicación versionada de imágenes y un documento específico de promoción y releases.
+- Se añadieron apéndices avanzados de TLS, GitOps, Prometheus/Grafana, policy-as-code y service mesh.
+- Se añadieron laboratorios de referencia para `Ingress` con TLS, GitOps, Prometheus, policies y service mesh.
+- Se añadieron dos notebooks nuevos para `values` Helm y checklist de release.
 
 ### Decisiones tomadas
 
@@ -41,8 +47,6 @@ Registro de trabajo, decisiones y próximos pasos del repositorio.
 
 ### Próximos pasos sugeridos
 
-- Añadir una promoción de imágenes o releases más explícita por entorno.
-- Conectar el laboratorio de PostgreSQL con una aplicación que haga lecturas y escrituras reales.
-- Incluir un apéndice opcional de métricas con Prometheus y Grafana.
-- Incorporar un bloque introductorio de GitOps aplicado al chart Helm del proyecto principal.
-- Añadir más retos de diagnóstico con fallos intencionales y soluciones guiadas.
+- Profundizar solo si se quiere especialización por proveedor cloud o por stack concreto.
+- Conectar algunos apéndices avanzados con laboratorios ejecutables más pesados si el entorno del curso lo permite.
+- Añadir tests funcionales end-to-end si en el futuro se estandariza un clúster local de referencia.

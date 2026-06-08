@@ -17,11 +17,15 @@ jobs:
       - name: Lint charts
         run: |
           helm lint examples/k8s/helm-demo
+          helm lint examples/helm/python-api
           helm lint examples/helm/fullstack-demo
 
       - name: Render charts
         run: |
           helm template python-api-demo examples/k8s/helm-demo > /dev/null
+          helm template python-api-dev examples/helm/python-api -f examples/helm/python-api/values-dev.yaml > /dev/null
+          helm template python-api-demo examples/helm/python-api -f examples/helm/python-api/values-demo.yaml > /dev/null
+          helm template python-api-prod examples/helm/python-api -f examples/helm/python-api/values-prod.yaml > /dev/null
           helm template fullstack-dev examples/helm/fullstack-demo -f examples/helm/fullstack-demo/values-dev.yaml > /dev/null
           helm template fullstack-demo examples/helm/fullstack-demo -f examples/helm/fullstack-demo/values-demo.yaml > /dev/null
           helm template fullstack-prod examples/helm/fullstack-demo -f examples/helm/fullstack-demo/values-prod.yaml > /dev/null

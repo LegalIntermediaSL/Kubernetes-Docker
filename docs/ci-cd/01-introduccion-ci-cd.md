@@ -19,7 +19,16 @@ Enseñar una progresión simple:
 - `helm lint`
 - `helm template`
 - builds Docker principales
+- publicacion versionada de imagenes
 
 ## Relación con el curso
 
 Estos pasos no sustituyen la práctica manual. La complementan.
+
+## Continuidad recomendada
+
+Para seguir el flujo completo de este repositorio:
+
+1. empieza por esta introduccion
+2. revisa los workflows reales en [Workflows del repositorio](02-workflows-del-repo.md)
+3. conecta despues con [Publicacion, promocion y releases](03-publicacion-promocion-y-releases.md)

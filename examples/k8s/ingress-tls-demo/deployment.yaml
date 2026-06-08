@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tls-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tls-demo
+  template:
+    metadata:
+      labels:
+        app: tls-demo
+    spec:
+      containers:
+        - name: web
+          image: nginx:1.27-alpine
+          ports:
+            - containerPort: 80

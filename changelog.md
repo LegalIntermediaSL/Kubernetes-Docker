@@ -144,3 +144,33 @@ Este archivo registra los cambios relevantes del repositorio.
 - `docs/temario-completo.md` reorganizado para incluir operación, automatización y retos como bloques explícitos.
 - `docs/plan-expansion.md` alineado con los entregables ya materializados en Helm, CI/CD y operación.
 - `bitacora.md` actualizada con el trabajo realizado y los siguientes saltos de expansión.
+
+## [1.0.0] - 2026-06-08
+
+### Añadido
+
+- `docs/docker/08-versionado-y-publicacion.md`.
+- `docs/docker/09-seguridad-de-contenedores-y-hardening.md`.
+- `docs/ci-cd/03-publicacion-promocion-y-releases.md`.
+- `.github/workflows/publish-images.yml`.
+- `examples/helm/python-api/` con chart completo y `values` por entorno.
+- `docs/kubernetes/19-helm-tutorial-paso-a-paso.md`.
+- `docs/kubernetes/20-ingress-tls-y-exposicion-avanzada.md`.
+- `docs/kubernetes/21-gitops-intro-argocd-y-flux.md`.
+- `docs/kubernetes/22-observabilidad-con-prometheus-y-grafana.md`.
+- `docs/kubernetes/23-policies-con-gatekeeper-y-kyverno.md`.
+- `docs/kubernetes/24-service-mesh-introduccion.md`.
+- `examples/k8s/ingress-tls-demo/`.
+- `examples/k8s/gitops-demo/`.
+- `examples/k8s/prometheus-demo/`.
+- `examples/k8s/policy-demo/`.
+- `examples/k8s/service-mesh-demo/`.
+- `notebooks/06_generador_values_helm.ipynb`.
+- `notebooks/07_checklist_release_ci_cd.ipynb`.
+
+### Cambiado
+
+- `README.md` y `docs/temario-completo.md` ampliados para reflejar el cierre del plan principal y la nueva capa de apéndices avanzados.
+- `docs/plan-expansion.md` actualizado para indicar que el recorrido principal ya está materializado.
+- `docs/ci-cd/01-introduccion-ci-cd.md` y `docs/ci-cd/02-workflows-del-repo.md` enlazados con el flujo de publicación.
+- `.github/workflows/helm-validate.yml` ampliado para validar también el chart `examples/helm/python-api/`.

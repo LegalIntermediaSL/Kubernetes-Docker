@@ -118,3 +118,6 @@ Después de esta base, sigue con:
 - [Helm y plantillas](kubernetes/09-helm-y-plantillas.md)
 - [Storage, PV y PVC](kubernetes/10-storage-pv-pvc.md)
 - [Probes, recursos y scheduling](kubernetes/11-probes-recursos-y-scheduling.md)
+- [Entornos, CI/CD y GitOps](kubernetes/14-entornos-ci-cd-y-gitops.md)
+- [Helm tutorial paso a paso](kubernetes/19-helm-tutorial-paso-a-paso.md)
+- [GitOps: Argo CD y Flux](kubernetes/21-gitops-intro-argocd-y-flux.md)

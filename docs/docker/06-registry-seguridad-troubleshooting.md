@@ -101,3 +101,10 @@ Puede que el build local esté usando caché o archivos no contemplados en el `D
 ## Puente hacia Kubernetes
 
 En despliegues reales en Kubernetes, publicar imágenes de forma limpia importa mucho porque el clúster necesita descargarlas desde un registry accesible.
+
+## Continuidad recomendada
+
+Si quieres profundizar lo que aquí solo aparece resumido:
+
+- [Versionado y publicacion de imagenes](08-versionado-y-publicacion.md)
+- [Seguridad de contenedores y hardening](09-seguridad-de-contenedores-y-hardening.md)

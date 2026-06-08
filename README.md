@@ -28,29 +28,38 @@ Este material está pensado para:
 6. [Docker Compose](docs/docker/05-docker-compose.md)
 7. [Registro, seguridad y troubleshooting Docker](docs/docker/06-registry-seguridad-troubleshooting.md)
 8. [Tutorial detallado de Docker](docs/docker/07-tutorial-docker-paso-a-paso.md)
-9. [Fundamentos de Kubernetes](docs/02-kubernetes-fundamentos.md)
-10. [Arquitectura del clúster](docs/kubernetes/03-arquitectura-del-cluster.md)
-11. [Workloads y actualizaciones](docs/kubernetes/04-workloads-y-actualizaciones.md)
-12. [ConfigMaps, Secrets y almacenamiento](docs/kubernetes/05-configmaps-secrets-y-storage.md)
-13. [Services, Ingress y red](docs/kubernetes/06-services-ingress-y-red.md)
-14. [Observabilidad, seguridad y depuración](docs/kubernetes/07-observabilidad-seguridad-y-debug.md)
-15. [Tutorial detallado de Kubernetes](docs/kubernetes/08-tutorial-kubernetes-paso-a-paso.md)
-16. [Helm y plantillas](docs/kubernetes/09-helm-y-plantillas.md)
-17. [Storage, PV y PVC](docs/kubernetes/10-storage-pv-pvc.md)
-18. [Probes, recursos y scheduling](docs/kubernetes/11-probes-recursos-y-scheduling.md)
-19. [RBAC, NetworkPolicies y aislamiento](docs/kubernetes/12-rbac-network-policies-y-aislamiento.md)
-20. [StatefulSet, HPA y patrones de escalado](docs/kubernetes/13-statefulsets-hpa-y-patrones-de-escalado.md)
-21. [Entornos, CI/CD y GitOps](docs/kubernetes/14-entornos-ci-cd-y-gitops.md)
-22. [Postgres, PVC e inicialización](docs/kubernetes/15-postgres-pvc-y-inicializacion.md)
-23. [Cookbook de troubleshooting](docs/kubernetes/16-cookbook-de-troubleshooting.md)
-24. [Seguridad aplicada y hardening](docs/kubernetes/17-seguridad-aplicada-y-hardening.md)
-25. [Observabilidad práctica](docs/kubernetes/18-observabilidad-practica.md)
-26. [Introducción a CI/CD](docs/ci-cd/01-introduccion-ci-cd.md)
-27. [Workflows del repositorio](docs/ci-cd/02-workflows-del-repo.md)
-28. [Primer proyecto práctico](docs/03-primer-proyecto.md)
-29. [Proyecto multiservicio](docs/04-proyecto-multiservicio.md)
-30. [Retos prácticos](docs/05-retos-practicos.md)
-31. [Temario completo](docs/temario-completo.md)
+9. [Versionado y publicacion de imagenes](docs/docker/08-versionado-y-publicacion.md)
+10. [Seguridad de contenedores y hardening](docs/docker/09-seguridad-de-contenedores-y-hardening.md)
+11. [Fundamentos de Kubernetes](docs/02-kubernetes-fundamentos.md)
+12. [Arquitectura del clúster](docs/kubernetes/03-arquitectura-del-cluster.md)
+13. [Workloads y actualizaciones](docs/kubernetes/04-workloads-y-actualizaciones.md)
+14. [ConfigMaps, Secrets y almacenamiento](docs/kubernetes/05-configmaps-secrets-y-storage.md)
+15. [Services, Ingress y red](docs/kubernetes/06-services-ingress-y-red.md)
+16. [Observabilidad, seguridad y depuración](docs/kubernetes/07-observabilidad-seguridad-y-debug.md)
+17. [Tutorial detallado de Kubernetes](docs/kubernetes/08-tutorial-kubernetes-paso-a-paso.md)
+18. [Helm y plantillas](docs/kubernetes/09-helm-y-plantillas.md)
+19. [Storage, PV y PVC](docs/kubernetes/10-storage-pv-pvc.md)
+20. [Probes, recursos y scheduling](docs/kubernetes/11-probes-recursos-y-scheduling.md)
+21. [RBAC, NetworkPolicies y aislamiento](docs/kubernetes/12-rbac-network-policies-y-aislamiento.md)
+22. [StatefulSet, HPA y patrones de escalado](docs/kubernetes/13-statefulsets-hpa-y-patrones-de-escalado.md)
+23. [Entornos, CI/CD y GitOps](docs/kubernetes/14-entornos-ci-cd-y-gitops.md)
+24. [Postgres, PVC e inicialización](docs/kubernetes/15-postgres-pvc-y-inicializacion.md)
+25. [Cookbook de troubleshooting](docs/kubernetes/16-cookbook-de-troubleshooting.md)
+26. [Seguridad aplicada y hardening](docs/kubernetes/17-seguridad-aplicada-y-hardening.md)
+27. [Observabilidad práctica](docs/kubernetes/18-observabilidad-practica.md)
+28. [Helm tutorial paso a paso](docs/kubernetes/19-helm-tutorial-paso-a-paso.md)
+29. [Ingress, TLS y exposicion avanzada](docs/kubernetes/20-ingress-tls-y-exposicion-avanzada.md)
+30. [GitOps: Argo CD y Flux](docs/kubernetes/21-gitops-intro-argocd-y-flux.md)
+31. [Prometheus, Grafana y metricas](docs/kubernetes/22-observabilidad-con-prometheus-y-grafana.md)
+32. [Policies con Gatekeeper y Kyverno](docs/kubernetes/23-policies-con-gatekeeper-y-kyverno.md)
+33. [Introduccion a service mesh](docs/kubernetes/24-service-mesh-introduccion.md)
+34. [Introducción a CI/CD](docs/ci-cd/01-introduccion-ci-cd.md)
+35. [Workflows del repositorio](docs/ci-cd/02-workflows-del-repo.md)
+36. [Publicacion, promocion y releases](docs/ci-cd/03-publicacion-promocion-y-releases.md)
+37. [Primer proyecto práctico](docs/03-primer-proyecto.md)
+38. [Proyecto multiservicio](docs/04-proyecto-multiservicio.md)
+39. [Retos prácticos](docs/05-retos-practicos.md)
+40. [Temario completo](docs/temario-completo.md)
 
 ## Estructura del repositorio
 
@@ -60,7 +69,8 @@ Este material está pensado para:
 │   └── workflows/
 │       ├── ci.yml
 │       ├── docker-build.yml
-│       └── helm-validate.yml
+│       ├── helm-validate.yml
+│       └── publish-images.yml
 ├── bitacora.md
 ├── changelog.md
 ├── docs/
@@ -73,14 +83,17 @@ Este material está pensado para:
 │   ├── temario-completo.md
 │   ├── ci-cd/
 │   │   ├── 01-introduccion-ci-cd.md
-│   │   └── 02-workflows-del-repo.md
+│   │   ├── 02-workflows-del-repo.md
+│   │   └── 03-publicacion-promocion-y-releases.md
 │   ├── docker/
 │   │   ├── 02-arquitectura-y-cli.md
 │   │   ├── 03-dockerfiles-y-buenas-practicas.md
 │   │   ├── 04-volumenes-redes-y-persistencia.md
 │   │   ├── 05-docker-compose.md
 │   │   ├── 06-registry-seguridad-troubleshooting.md
-│   │   └── 07-tutorial-docker-paso-a-paso.md
+│   │   ├── 07-tutorial-docker-paso-a-paso.md
+│   │   ├── 08-versionado-y-publicacion.md
+│   │   └── 09-seguridad-de-contenedores-y-hardening.md
 │   └── kubernetes/
 │       ├── 03-arquitectura-del-cluster.md
 │       ├── 04-workloads-y-actualizaciones.md
@@ -97,13 +110,21 @@ Este material está pensado para:
 │       ├── 15-postgres-pvc-y-inicializacion.md
 │       ├── 16-cookbook-de-troubleshooting.md
 │       ├── 17-seguridad-aplicada-y-hardening.md
-│       └── 18-observabilidad-practica.md
+│       ├── 18-observabilidad-practica.md
+│       ├── 19-helm-tutorial-paso-a-paso.md
+│       ├── 20-ingress-tls-y-exposicion-avanzada.md
+│       ├── 21-gitops-intro-argocd-y-flux.md
+│       ├── 22-observabilidad-con-prometheus-y-grafana.md
+│       ├── 23-policies-con-gatekeeper-y-kyverno.md
+│       └── 24-service-mesh-introduccion.md
 ├── notebooks/
 │   ├── 01_generador_dockerfile.ipynb
 │   ├── 02_generador_manifiestos_k8s.ipynb
 │   ├── 03_planificador_recursos_k8s.ipynb
 │   ├── 04_generador_configmaps_y_secrets.ipynb
 │   ├── 05_generador_pvc_y_resources.ipynb
+│   ├── 06_generador_values_helm.ipynb
+│   ├── 07_checklist_release_ci_cd.ipynb
 │   └── README.md
 └── examples/
     ├── docker/
@@ -112,20 +133,26 @@ Este material está pensado para:
     │   ├── python-api/
     │   └── compose-web-api/
     ├── helm/
+    │   ├── python-api/
     │   └── fullstack-demo/
     └── k8s/
         ├── fullstack-demo/
+        ├── gitops-demo/
         ├── helm-demo/
         ├── hola-nginx/
         ├── configmap-secret/
         ├── ingress-demo/
+        ├── ingress-tls-demo/
         ├── job-cronjob/
         ├── network-policy-demo/
+        ├── policy-demo/
+        ├── prometheus-demo/
         ├── probes-demo/
         ├── postgres-demo/
         ├── python-api/
         ├── rbac-demo/
         ├── scaling-demo/
+        ├── service-mesh-demo/
         └── storage-demo/
 ```
 
@@ -161,6 +188,8 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - Registros, seguridad, escaneo y depuración
 - Tutorial guiado paso a paso con ejercicios y verificación
 - Proyecto fullstack con frontend, API y Redis
+- Versionado, tags, registries y publicación automatizable
+- Hardening de imágenes y seguridad de contenedores
 
 ### Kubernetes
 
@@ -174,6 +203,7 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - Persistencia con PostgreSQL, inicialización y `readinessProbe`
 - Cookbook de troubleshooting y observabilidad operativa
 - Entornos, CI/CD y GitOps como temas de nivel superior
+- TLS, Prometheus/Grafana, policy-as-code y service mesh como apéndices avanzados
 - Tutorial guiado desde clúster local hasta despliegues más completos
 - Proyecto fullstack comparable con Docker Compose
 
@@ -184,12 +214,14 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - Notebooks para estimar capacidad y requests
 - Retos prácticos para modificar, romper y depurar laboratorios
 - Guía de uso en `notebooks/README.md`
+- Notebooks para values Helm y checklist de release
 
 ### Automatización
 
 - Workflows de GitHub Actions para validación general del repo
 - Build de imágenes Docker principales
 - Lint y render de charts Helm
+- Publicación versionada de imágenes por tag
 - Documentación específica del bloque de CI/CD
 
 ## Material visual
@@ -202,6 +234,7 @@ Varios módulos del repositorio incluyen diagramas `Mermaid` para explicar:
 - El tráfico entre `Service`, `Ingress` y `Pods`
 - La relación entre `PVC`, `Deployment` y base de datos
 - El aislamiento con RBAC y `NetworkPolicy`
+- El flujo declarativo de GitOps y promoción por entornos
 - El recorrido completo del primer proyecto práctico
 - Los tutoriales paso a paso de Docker y Kubernetes
 
@@ -215,18 +248,16 @@ Varios módulos del repositorio incluyen diagramas `Mermaid` para explicar:
 
 Empieza por la [introducción](docs/00-introduccion.md), luego recorre el [temario completo](docs/temario-completo.md) y después alterna teoría con los directorios de `examples/` y `notebooks/`.
 
-## Próximos temas a añadir
+## Estado del plan de expansión
 
-El roadmap detallado del crecimiento del repositorio está en [docs/plan-expansion.md](docs/plan-expansion.md).
+El roadmap detallado está en [docs/plan-expansion.md](docs/plan-expansion.md).
 
-Ese documento ya incluye:
+La parte principal del plan ya quedó materializada en el repositorio:
 
-- fases de crecimiento
-- entregables por etapa
-- sprints sugeridos
-- malla temática futura de Docker y Kubernetes
-- banco de laboratorios y ejercicios
-- rutas sugeridas por tipo de alumno
-- riesgos y mitigaciones
-- métricas de avance y calidad
-- criterios de aceptación por bloque
+- bloques básicos, intermedios y superiores de Docker y Kubernetes
+- ejemplos prácticos en Docker, Compose, Kubernetes y Helm
+- CI/CD, publicación y promoción por entornos
+- seguridad, observabilidad, troubleshooting y gobierno básico
+- apéndices avanzados de GitOps, TLS, Prometheus/Grafana, policies y service mesh
+
+Los siguientes saltos ya quedarían fuera del plan base y entrarían más en especialización o variantes por proveedor.
