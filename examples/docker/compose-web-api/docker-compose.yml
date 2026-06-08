@@ -1,0 +1,20 @@
+services:
+  api:
+    build: ../python-api
+    environment:
+      APP_NAME: Curso Docker Compose
+      APP_ENV: compose
+      PORT: 8000
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+
+  web:
+    image: nginx:alpine
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro

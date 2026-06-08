@@ -16,6 +16,22 @@ Archivos implicados:
 - `examples/k8s/hola-nginx/deployment.yaml`
 - `examples/k8s/hola-nginx/service.yaml`
 
+## Vista general del flujo
+
+```mermaid
+flowchart LR
+    A["index.html + Dockerfile"] --> B["docker build"]
+    B --> C["Imagen hola-nginx:local"]
+    C --> D["docker run"]
+    C --> E["kind load docker-image"]
+    E --> F["Cluster local"]
+    F --> G["Deployment"]
+    G --> H["Pods"]
+    H --> I["Service"]
+    I --> J["kubectl port-forward"]
+    J --> K["http://localhost:8080"]
+```
+
 ## Paso 1: construir la imagen
 
 ```bash
@@ -68,6 +84,16 @@ kubectl get deployments
 kubectl get services
 ```
 
+## Topologia dentro del cluster
+
+```mermaid
+flowchart TB
+    D["Deployment hola-nginx"] --> P1["Pod 1"]
+    D --> P2["Pod 2"]
+    S["Service hola-nginx"] --> P1
+    S --> P2
+```
+
 ## Paso 6: acceder a la aplicación
 
 Usaremos `port-forward`:
@@ -82,11 +108,35 @@ Luego visita:
 http://localhost:8080
 ```
 
+## Camino del trafico en local
+
+```mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant PF as kubectl port-forward
+    participant S as Service hola-nginx
+    participant P as Pod hola-nginx
+    U->>PF: GET http://localhost:8080
+    PF->>S: Reenvia trafico al Service
+    S->>P: Balancea hacia un Pod
+    P-->>U: Respuesta HTML
+```
+
 ## Qué deberías observar
 
 - Docker ejecuta un contenedor individual.
 - Kubernetes ejecuta pods gestionados por un deployment.
 - El service da un punto estable de acceso dentro del clúster.
+
+## Después de este ejercicio
+
+Si este flujo ya te funciona, los siguientes laboratorios naturales dentro del repositorio son:
+
+- `examples/docker/python-api/`
+- `examples/docker/compose-web-api/`
+- `examples/k8s/configmap-secret/`
+- `examples/k8s/ingress-demo/`
+- `examples/k8s/job-cronjob/`
 
 ## Experimentos recomendados
 

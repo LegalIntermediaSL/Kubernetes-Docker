@@ -69,6 +69,23 @@ Una forma simple de verlo:
 
 Se pueden aprender por separado, pero tiene mucho sentido estudiarlos en ese orden.
 
+## Mapa conceptual
+
+```mermaid
+flowchart LR
+    A["Codigo fuente"] --> B["Dockerfile"]
+    B --> C["docker build"]
+    C --> D["Imagen Docker"]
+    D --> E["docker run"]
+    E --> F["Contenedor local"]
+    D --> G["Registry"]
+    G --> H["Cluster Kubernetes"]
+    H --> I["Deployment"]
+    I --> J["Pods"]
+    J --> K["Service"]
+    K --> L["Usuario o sistema cliente"]
+```
+
 ## Cuándo usar cada uno
 
 Usa Docker cuando quieras:

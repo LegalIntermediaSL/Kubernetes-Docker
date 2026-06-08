@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: saludo-job
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: saludo
+          image: busybox:1.36
+          command: ["sh", "-c", "echo Hola desde Kubernetes; date"]
+  backoffLimit: 1

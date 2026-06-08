@@ -104,3 +104,14 @@ http://localhost:8080
 ## Siguiente paso
 
 Continúa con el [primer proyecto práctico](03-primer-proyecto.md), donde usaremos Docker y Kubernetes juntos.
+
+## Siguientes módulos de Kubernetes
+
+Después de esta base, sigue con:
+
+- [Arquitectura del clúster](kubernetes/03-arquitectura-del-cluster.md)
+- [Workloads y actualizaciones](kubernetes/04-workloads-y-actualizaciones.md)
+- [ConfigMaps, Secrets y almacenamiento](kubernetes/05-configmaps-secrets-y-storage.md)
+- [Services, Ingress y red](kubernetes/06-services-ingress-y-red.md)
+- [Observabilidad, seguridad y depuración](kubernetes/07-observabilidad-seguridad-y-debug.md)
+- [Tutorial detallado de Kubernetes](kubernetes/08-tutorial-kubernetes-paso-a-paso.md)
