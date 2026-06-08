@@ -174,3 +174,24 @@ Este archivo registra los cambios relevantes del repositorio.
 - `docs/plan-expansion.md` actualizado para indicar que el recorrido principal ya está materializado.
 - `docs/ci-cd/01-introduccion-ci-cd.md` y `docs/ci-cd/02-workflows-del-repo.md` enlazados con el flujo de publicación.
 - `.github/workflows/helm-validate.yml` ampliado para validar también el chart `examples/helm/python-api/`.
+
+## [1.1.0] - 2026-06-08
+
+### Añadido
+
+- `docs/ci-cd/04-ci-end-to-end-con-kind.md`.
+- `.github/workflows/kind-e2e.yml`.
+- `docs/kubernetes/25-kustomize-bases-y-overlays.md`.
+- `docs/kubernetes/26-cert-manager-y-tls-automatizado.md`.
+- `docs/kubernetes/27-argocd-practico-app-of-apps-y-sync.md`.
+- `docs/kubernetes/28-observabilidad-stack-completo.md`.
+- `examples/k8s/kustomize-demo/`.
+- `examples/k8s/cert-manager-demo/`.
+- `examples/k8s/argocd-practical-demo/`.
+- `examples/k8s/observability-stack-demo/`.
+
+### Cambiado
+
+- `examples/docker/python-api/app.py` y `requirements.txt` ampliados para exponer métricas Prometheus en `/metrics`.
+- `examples/k8s/python-api/` y `examples/helm/python-api/` ajustados para usar puertos con nombre `http`, facilitando `ServiceMonitor`.
+- `README.md`, `docs/temario-completo.md`, `bitacora.md` y `docs/plan-expansion.md` actualizados para reflejar la nueva fase avanzada posterior al plan base.

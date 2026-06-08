@@ -33,4 +33,11 @@ kubectl port-forward service/python-api 8000:80
 ```bash
 curl -s http://localhost:8000/
 curl -s http://localhost:8000/health
+curl -s http://localhost:8000/metrics
 ```
+
+## Endpoints utiles
+
+- `/`: respuesta principal
+- `/health`: sonda de salud
+- `/metrics`: metricas Prometheus basicas para los laboratorios de observabilidad

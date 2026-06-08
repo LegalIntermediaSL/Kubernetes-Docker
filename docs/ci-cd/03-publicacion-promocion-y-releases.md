@@ -149,3 +149,4 @@ Si un despliegue falla, un buen sistema te deja responder rapido:
 - [Versionado y publicacion de imagenes](../docker/08-versionado-y-publicacion.md)
 - [Entornos, CI/CD y GitOps](../kubernetes/14-entornos-ci-cd-y-gitops.md)
 - [Helm tutorial paso a paso](../kubernetes/19-helm-tutorial-paso-a-paso.md)
+- [CI end-to-end con kind](04-ci-end-to-end-con-kind.md)

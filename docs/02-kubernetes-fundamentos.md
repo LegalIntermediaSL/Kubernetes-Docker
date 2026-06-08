@@ -121,3 +121,7 @@ Después de esta base, sigue con:
 - [Entornos, CI/CD y GitOps](kubernetes/14-entornos-ci-cd-y-gitops.md)
 - [Helm tutorial paso a paso](kubernetes/19-helm-tutorial-paso-a-paso.md)
 - [GitOps: Argo CD y Flux](kubernetes/21-gitops-intro-argocd-y-flux.md)
+- [Kustomize: bases y overlays](kubernetes/25-kustomize-bases-y-overlays.md)
+- [cert-manager y TLS automatizado](kubernetes/26-cert-manager-y-tls-automatizado.md)
+- [Argo CD practico: app-of-apps y sync](kubernetes/27-argocd-practico-app-of-apps-y-sync.md)
+- [Observabilidad completa con Prometheus y Grafana](kubernetes/28-observabilidad-stack-completo.md)

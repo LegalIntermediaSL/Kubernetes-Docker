@@ -38,6 +38,9 @@ Registro de trabajo, decisiones y próximos pasos del repositorio.
 - Se añadieron apéndices avanzados de TLS, GitOps, Prometheus/Grafana, policy-as-code y service mesh.
 - Se añadieron laboratorios de referencia para `Ingress` con TLS, GitOps, Prometheus, policies y service mesh.
 - Se añadieron dos notebooks nuevos para `values` Helm y checklist de release.
+- Se añadió una fase avanzada adicional con `Kustomize`, `cert-manager`, Argo CD más práctico y observabilidad más completa.
+- Se añadió un workflow `kind-e2e.yml` para validar despliegues reales en un clúster efímero.
+- La `python-api` del curso ahora expone métricas en `/metrics` para conectar observabilidad y pruebas avanzadas.
 
 ### Decisiones tomadas
 
@@ -48,5 +51,5 @@ Registro de trabajo, decisiones y próximos pasos del repositorio.
 ### Próximos pasos sugeridos
 
 - Profundizar solo si se quiere especialización por proveedor cloud o por stack concreto.
-- Conectar algunos apéndices avanzados con laboratorios ejecutables más pesados si el entorno del curso lo permite.
-- Añadir tests funcionales end-to-end si en el futuro se estandariza un clúster local de referencia.
+- Llevar la fase avanzada a integración real con controladores instalados si se define un entorno de laboratorio estándar.
+- Añadir escenarios más ricos de base de datos, backup y recovery si el curso evoluciona hacia operación aplicada.

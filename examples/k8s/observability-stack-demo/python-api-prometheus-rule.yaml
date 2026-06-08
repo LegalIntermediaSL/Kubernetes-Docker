@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: python-api
+  labels:
+    release: observability
+spec:
+  groups:
+    - name: python-api.rules
+      rules:
+        - alert: PythonApiDown
+          expr: up{job="python-api"} == 0
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: "python-api no responde"
+            description: "Prometheus no ha podido raspar la aplicacion python-api durante mas de 2 minutos."

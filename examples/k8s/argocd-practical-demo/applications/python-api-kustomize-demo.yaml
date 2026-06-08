@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: python-api-kustomize-demo
+  namespace: argocd
+spec:
+  project: curso-demo
+  source:
+    repoURL: https://github.com/example/Kubernetes-Docker.git
+    targetRevision: main
+    path: examples/k8s/kustomize-demo/overlays/demo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kustomize-demo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: curso-root
+  namespace: argocd
+spec:
+  project: curso-demo
+  source:
+    repoURL: https://github.com/example/Kubernetes-Docker.git
+    targetRevision: main
+    path: examples/k8s/argocd-practical-demo/applications
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

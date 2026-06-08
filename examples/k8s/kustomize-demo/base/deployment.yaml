@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: python-api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: python-api
@@ -16,13 +16,9 @@ spec:
         - name: python-api
           image: python-api:local
           imagePullPolicy: IfNotPresent
-          env:
-            - name: APP_NAME
-              value: Curso Kubernetes
-            - name: APP_ENV
-              value: cluster-local
-            - name: PORT
-              value: "8000"
+          envFrom:
+            - configMapRef:
+                name: python-api-config
           ports:
             - name: http
               containerPort: 8000
@@ -40,8 +36,8 @@ spec:
             periodSeconds: 10
           resources:
             requests:
-              cpu: "100m"
-              memory: "128Mi"
+              cpu: 100m
+              memory: 128Mi
             limits:
-              cpu: "300m"
-              memory: "256Mi"
+              cpu: 300m
+              memory: 256Mi

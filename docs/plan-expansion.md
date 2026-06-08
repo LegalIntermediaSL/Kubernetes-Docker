@@ -38,6 +38,7 @@ La parte principal de este plan ya esta materializada en el repositorio:
 - el proyecto multi-servicio ya existe en Compose, Kubernetes y Helm
 - CI/CD, publicacion y promocion por entornos ya tienen documentacion y workflows
 - las extensiones avanzadas ya cuentan con apendices y ejemplos de referencia
+- existe ya una fase avanzada posterior con `Kustomize`, `cert-manager`, Argo CD practico, observabilidad mas completa y CI end-to-end con `kind`
 
 ## Alcance
 
@@ -724,6 +725,18 @@ Lo que quede por crecer a partir de aqui ya tiende a ser:
 - especializacion por proveedor cloud
 - variantes mas profundas de observabilidad o seguridad
 - automatizacion mas cercana a entornos de equipo concretos
+
+## Fase avanzada posterior al plan base
+
+Despues del cierre del plan principal, el repositorio tambien incorporo una capa adicional enfocada en:
+
+- `Kustomize` con `base` y `overlays`
+- certificados automatizados con `cert-manager`
+- GitOps mas practico con Argo CD y patron `app-of-apps`
+- observabilidad mas completa con `kube-prometheus-stack`
+- CI end-to-end con cluster efimero `kind`
+
+Esta fase ya no era estrictamente necesaria para cumplir el plan base, pero sirve como puente hacia una version mas cercana a plataforma real.
 
 ## Plan de ejecución detallado para la Fase 1
 

@@ -22,7 +22,8 @@ spec:
             - configMapRef:
                 name: {{ include "python-api.fullname" . }}-config
           ports:
-            - containerPort: {{ .Values.service.targetPort }}
+            - name: http
+              containerPort: {{ .Values.service.targetPort }}
           readinessProbe:
             httpGet:
               path: /health

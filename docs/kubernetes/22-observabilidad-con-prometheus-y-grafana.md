@@ -101,3 +101,4 @@ Un dashboard gana mucho valor cuando sabes que version se desplego y cuando.
 Si ya mides, el siguiente salto de gobernanza es controlar que se puede desplegar y bajo que reglas:
 
 - [Policies con Gatekeeper y Kyverno](23-policies-con-gatekeeper-y-kyverno.md)
+- [Observabilidad completa con Prometheus y Grafana](28-observabilidad-stack-completo.md)

@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: python-api-helm-demo
+  namespace: argocd
+spec:
+  project: curso-demo
+  source:
+    repoURL: https://github.com/example/Kubernetes-Docker.git
+    targetRevision: main
+    path: examples/helm/python-api
+    helm:
+      valueFiles:
+        - values-demo.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

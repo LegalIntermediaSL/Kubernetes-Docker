@@ -92,21 +92,35 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 4. [Prometheus, Grafana y metricas](kubernetes/22-observabilidad-con-prometheus-y-grafana.md)
 5. [Policies con Gatekeeper y Kyverno](kubernetes/23-policies-con-gatekeeper-y-kyverno.md)
 6. [Introduccion a service mesh](kubernetes/24-service-mesh-introduccion.md)
+7. [Kustomize: bases y overlays](kubernetes/25-kustomize-bases-y-overlays.md)
+8. [cert-manager y TLS automatizado](kubernetes/26-cert-manager-y-tls-automatizado.md)
+9. [Argo CD practico: app-of-apps y sync](kubernetes/27-argocd-practico-app-of-apps-y-sync.md)
+10. [Observabilidad completa con Prometheus y Grafana](kubernetes/28-observabilidad-stack-completo.md)
 
 ### Objetivos del bloque
 
 - Cerrar el recorrido del curso con temas frecuentes en plataformas modernas.
 - Entender cuando un tema avanzado aporta valor y cuando aun no hace falta.
 - Dar un puente hacia GitOps, gobierno, TLS, metricas y trafico avanzado.
+- Mostrar una fase avanzada mas operativa y ejecutable sobre la base del curso.
 
-## Bloque 7: tutoriales guiados
+## Bloque 7: CI y validacion avanzada
+
+1. [CI end-to-end con kind](ci-cd/04-ci-end-to-end-con-kind.md)
+
+### Objetivos del bloque
+
+- Comprobar que una parte del curso no solo renderiza, sino que despliega y responde en un cluster efimero.
+- Conectar la validacion documental con una verificacion mas operativa.
+
+## Bloque 8: tutoriales guiados
 
 - [Tutorial detallado de Docker](docker/07-tutorial-docker-paso-a-paso.md)
 - [Tutorial detallado de Kubernetes](kubernetes/08-tutorial-kubernetes-paso-a-paso.md)
 
 Estos tutoriales sirven como recorrido continuo y practico. La idea es que no solo leas conceptos sueltos, sino que completes una secuencia de comandos y verificaciones de principio a fin.
 
-## Bloque 8: ejemplos y laboratorio
+## Bloque 9: ejemplos y laboratorio
 
 ### Docker
 
@@ -122,12 +136,16 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 
 ### Kubernetes
 
+- `examples/k8s/argocd-practical-demo/`
+- `examples/k8s/cert-manager-demo/`
 - `examples/k8s/fullstack-demo/`
 - `examples/k8s/gitops-demo/`
 - `examples/k8s/helm-demo/`
 - `examples/k8s/hola-nginx/`
 - `examples/k8s/ingress-tls-demo/`
+- `examples/k8s/kustomize-demo/`
 - `examples/k8s/network-policy-demo/`
+- `examples/k8s/observability-stack-demo/`
 - `examples/k8s/policy-demo/`
 - `examples/k8s/postgres-demo/`
 - `examples/k8s/prometheus-demo/`
@@ -141,7 +159,7 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 - `examples/k8s/probes-demo/`
 - `examples/k8s/storage-demo/`
 
-## Bloque 9: notebooks de utilidades
+## Bloque 10: notebooks de utilidades
 
 - `notebooks/01_generador_dockerfile.ipynb`
 - `notebooks/02_generador_manifiestos_k8s.ipynb`
@@ -151,13 +169,13 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 - `notebooks/06_generador_values_helm.ipynb`
 - `notebooks/07_checklist_release_ci_cd.ipynb`
 
-## Bloque 10: retos prácticos
+## Bloque 11: retos prácticos
 
 - [Retos prácticos](05-retos-practicos.md)
 
 Este bloque sirve para consolidar el aprendizaje rompiendo y reparando ejemplos del repositorio en lugar de limitarse a repetir comandos.
 
-## Bloque 11: roadmap del repositorio
+## Bloque 12: roadmap del repositorio
 
 - [Plan de expansión](plan-expansion.md)
 
@@ -199,3 +217,4 @@ Al final del temario deberías poder:
 - Comparar una misma aplicación multi-servicio en Compose y Kubernetes.
 - Explicar qué cambia al pasar del bloque intermedio a temas de plataforma de nivel superior.
 - Describir un flujo razonable de versionado, publicación, GitOps y gobierno básico.
+- Entender cuándo conviene añadir `Kustomize`, `cert-manager`, Argo CD y observabilidad más completa.

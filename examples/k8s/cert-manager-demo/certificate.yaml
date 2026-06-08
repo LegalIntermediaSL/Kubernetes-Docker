@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: python-api-tls
+  namespace: cert-manager-demo
+spec:
+  secretName: python-api-tls
+  dnsNames:
+    - python-api.local
+  issuerRef:
+    name: selfsigned-local
+    kind: ClusterIssuer

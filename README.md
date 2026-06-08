@@ -53,13 +53,18 @@ Este material está pensado para:
 31. [Prometheus, Grafana y metricas](docs/kubernetes/22-observabilidad-con-prometheus-y-grafana.md)
 32. [Policies con Gatekeeper y Kyverno](docs/kubernetes/23-policies-con-gatekeeper-y-kyverno.md)
 33. [Introduccion a service mesh](docs/kubernetes/24-service-mesh-introduccion.md)
-34. [Introducción a CI/CD](docs/ci-cd/01-introduccion-ci-cd.md)
-35. [Workflows del repositorio](docs/ci-cd/02-workflows-del-repo.md)
-36. [Publicacion, promocion y releases](docs/ci-cd/03-publicacion-promocion-y-releases.md)
-37. [Primer proyecto práctico](docs/03-primer-proyecto.md)
-38. [Proyecto multiservicio](docs/04-proyecto-multiservicio.md)
-39. [Retos prácticos](docs/05-retos-practicos.md)
-40. [Temario completo](docs/temario-completo.md)
+34. [Kustomize: bases y overlays](docs/kubernetes/25-kustomize-bases-y-overlays.md)
+35. [cert-manager y TLS automatizado](docs/kubernetes/26-cert-manager-y-tls-automatizado.md)
+36. [Argo CD practico: app-of-apps y sync](docs/kubernetes/27-argocd-practico-app-of-apps-y-sync.md)
+37. [Observabilidad completa con Prometheus y Grafana](docs/kubernetes/28-observabilidad-stack-completo.md)
+38. [Introducción a CI/CD](docs/ci-cd/01-introduccion-ci-cd.md)
+39. [Workflows del repositorio](docs/ci-cd/02-workflows-del-repo.md)
+40. [Publicacion, promocion y releases](docs/ci-cd/03-publicacion-promocion-y-releases.md)
+41. [CI end-to-end con kind](docs/ci-cd/04-ci-end-to-end-con-kind.md)
+42. [Primer proyecto práctico](docs/03-primer-proyecto.md)
+43. [Proyecto multiservicio](docs/04-proyecto-multiservicio.md)
+44. [Retos prácticos](docs/05-retos-practicos.md)
+45. [Temario completo](docs/temario-completo.md)
 
 ## Estructura del repositorio
 
@@ -70,6 +75,7 @@ Este material está pensado para:
 │       ├── ci.yml
 │       ├── docker-build.yml
 │       ├── helm-validate.yml
+│       ├── kind-e2e.yml
 │       └── publish-images.yml
 ├── bitacora.md
 ├── changelog.md
@@ -84,7 +90,8 @@ Este material está pensado para:
 │   ├── ci-cd/
 │   │   ├── 01-introduccion-ci-cd.md
 │   │   ├── 02-workflows-del-repo.md
-│   │   └── 03-publicacion-promocion-y-releases.md
+│   │   ├── 03-publicacion-promocion-y-releases.md
+│   │   └── 04-ci-end-to-end-con-kind.md
 │   ├── docker/
 │   │   ├── 02-arquitectura-y-cli.md
 │   │   ├── 03-dockerfiles-y-buenas-practicas.md
@@ -116,7 +123,11 @@ Este material está pensado para:
 │       ├── 21-gitops-intro-argocd-y-flux.md
 │       ├── 22-observabilidad-con-prometheus-y-grafana.md
 │       ├── 23-policies-con-gatekeeper-y-kyverno.md
-│       └── 24-service-mesh-introduccion.md
+│       ├── 24-service-mesh-introduccion.md
+│       ├── 25-kustomize-bases-y-overlays.md
+│       ├── 26-cert-manager-y-tls-automatizado.md
+│       ├── 27-argocd-practico-app-of-apps-y-sync.md
+│       └── 28-observabilidad-stack-completo.md
 ├── notebooks/
 │   ├── 01_generador_dockerfile.ipynb
 │   ├── 02_generador_manifiestos_k8s.ipynb
@@ -136,6 +147,8 @@ Este material está pensado para:
     │   ├── python-api/
     │   └── fullstack-demo/
     └── k8s/
+        ├── argocd-practical-demo/
+        ├── cert-manager-demo/
         ├── fullstack-demo/
         ├── gitops-demo/
         ├── helm-demo/
@@ -144,7 +157,9 @@ Este material está pensado para:
         ├── ingress-demo/
         ├── ingress-tls-demo/
         ├── job-cronjob/
+        ├── kustomize-demo/
         ├── network-policy-demo/
+        ├── observability-stack-demo/
         ├── policy-demo/
         ├── prometheus-demo/
         ├── probes-demo/
@@ -204,6 +219,7 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - Cookbook de troubleshooting y observabilidad operativa
 - Entornos, CI/CD y GitOps como temas de nivel superior
 - TLS, Prometheus/Grafana, policy-as-code y service mesh como apéndices avanzados
+- Kustomize, cert-manager, Argo CD práctico y observabilidad completa como fase avanzada
 - Tutorial guiado desde clúster local hasta despliegues más completos
 - Proyecto fullstack comparable con Docker Compose
 
@@ -222,6 +238,7 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - Build de imágenes Docker principales
 - Lint y render de charts Helm
 - Publicación versionada de imágenes por tag
+- CI end-to-end con cluster efímero en `kind`
 - Documentación específica del bloque de CI/CD
 
 ## Material visual
@@ -235,6 +252,7 @@ Varios módulos del repositorio incluyen diagramas `Mermaid` para explicar:
 - La relación entre `PVC`, `Deployment` y base de datos
 - El aislamiento con RBAC y `NetworkPolicy`
 - El flujo declarativo de GitOps y promoción por entornos
+- La transición desde YAML base hacia overlays y reconciliación GitOps
 - El recorrido completo del primer proyecto práctico
 - Los tutoriales paso a paso de Docker y Kubernetes
 
@@ -258,6 +276,7 @@ La parte principal del plan ya quedó materializada en el repositorio:
 - ejemplos prácticos en Docker, Compose, Kubernetes y Helm
 - CI/CD, publicación y promoción por entornos
 - seguridad, observabilidad, troubleshooting y gobierno básico
+- una fase avanzada adicional con `kind`, `Kustomize`, `cert-manager`, Argo CD práctico y observabilidad más completa
 - apéndices avanzados de GitOps, TLS, Prometheus/Grafana, policies y service mesh
 
 Los siguientes saltos ya quedarían fuera del plan base y entrarían más en especialización o variantes por proveedor.

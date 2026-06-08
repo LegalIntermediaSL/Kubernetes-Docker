@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: curso-demo
+  namespace: argocd
+spec:
+  description: Proyecto de ejemplo para apps del curso
+  sourceRepos:
+    - https://github.com/example/Kubernetes-Docker.git
+  destinations:
+    - namespace: demo
+      server: https://kubernetes.default.svc
+    - namespace: kustomize-demo
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"

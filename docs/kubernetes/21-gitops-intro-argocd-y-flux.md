@@ -120,3 +120,4 @@ GitOps mejora mucho cuando los entornos y paths son claros.
 Cuando GitOps ya no suena abstracto, conviene reforzar la parte operativa con metricas y dashboards:
 
 - [Prometheus, Grafana y metricas](22-observabilidad-con-prometheus-y-grafana.md)
+- [Argo CD practico: app-of-apps y sync](27-argocd-practico-app-of-apps-y-sync.md)
