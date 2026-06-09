@@ -61,10 +61,11 @@ Este material está pensado para:
 39. [Workflows del repositorio](docs/ci-cd/02-workflows-del-repo.md)
 40. [Publicacion, promocion y releases](docs/ci-cd/03-publicacion-promocion-y-releases.md)
 41. [CI end-to-end con kind](docs/ci-cd/04-ci-end-to-end-con-kind.md)
-42. [Primer proyecto práctico](docs/03-primer-proyecto.md)
-43. [Proyecto multiservicio](docs/04-proyecto-multiservicio.md)
-44. [Retos prácticos](docs/05-retos-practicos.md)
-45. [Temario completo](docs/temario-completo.md)
+42. [Laboratorio local avanzado](docs/06-laboratorio-local-avanzado.md)
+43. [Primer proyecto práctico](docs/03-primer-proyecto.md)
+44. [Proyecto multiservicio](docs/04-proyecto-multiservicio.md)
+45. [Retos prácticos](docs/05-retos-practicos.md)
+46. [Temario completo](docs/temario-completo.md)
 
 ## Estructura del repositorio
 
@@ -77,6 +78,7 @@ Este material está pensado para:
 │       ├── helm-validate.yml
 │       ├── kind-e2e.yml
 │       └── publish-images.yml
+├── Makefile
 ├── bitacora.md
 ├── changelog.md
 ├── docs/
@@ -86,7 +88,9 @@ Este material está pensado para:
 │   ├── 03-primer-proyecto.md
 │   ├── 04-proyecto-multiservicio.md
 │   ├── 05-retos-practicos.md
+│   ├── 06-laboratorio-local-avanzado.md
 │   ├── temario-completo.md
+│   ├── validacion-operativa.md
 │   ├── ci-cd/
 │   │   ├── 01-introduccion-ci-cd.md
 │   │   ├── 02-workflows-del-repo.md
@@ -239,6 +243,7 @@ La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloq
 - Lint y render de charts Helm
 - Publicación versionada de imágenes por tag
 - CI end-to-end con cluster efímero en `kind`
+- Automatización local con `Makefile` para repetir el laboratorio avanzado
 - Documentación específica del bloque de CI/CD
 
 ## Material visual
@@ -261,6 +266,7 @@ Varios módulos del repositorio incluyen diagramas `Mermaid` para explicar:
 - [Bitácora](bitacora.md)
 - [Changelog](changelog.md)
 - [Plan de expansión](docs/plan-expansion.md)
+- [Validacion operativa](docs/validacion-operativa.md)
 
 ## Primer paso sugerido
 
@@ -278,5 +284,7 @@ La parte principal del plan ya quedó materializada en el repositorio:
 - seguridad, observabilidad, troubleshooting y gobierno básico
 - una fase avanzada adicional con `kind`, `Kustomize`, `cert-manager`, Argo CD práctico y observabilidad más completa
 - apéndices avanzados de GitOps, TLS, Prometheus/Grafana, policies y service mesh
+
+Ademas, la validacion en vivo ejecutada el 2026-06-09 quedo resumida en [docs/validacion-operativa.md](docs/validacion-operativa.md), con pruebas reales sobre `minikube` para Kustomize, Helm, `cert-manager`, Argo CD y observabilidad.
 
 Los siguientes saltos ya quedarían fuera del plan base y entrarían más en especialización o variantes por proveedor.

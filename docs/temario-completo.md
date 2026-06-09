@@ -107,11 +107,13 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 ## Bloque 7: CI y validacion avanzada
 
 1. [CI end-to-end con kind](ci-cd/04-ci-end-to-end-con-kind.md)
+2. [Laboratorio local avanzado](06-laboratorio-local-avanzado.md)
 
 ### Objetivos del bloque
 
 - Comprobar que una parte del curso no solo renderiza, sino que despliega y responde en un cluster efimero.
 - Conectar la validacion documental con una verificacion mas operativa.
+- Repetir localmente el laboratorio avanzado sin reconstruir todos los comandos a mano.
 
 ## Bloque 8: tutoriales guiados
 

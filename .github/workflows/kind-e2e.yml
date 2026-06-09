@@ -23,37 +23,19 @@ jobs:
           cluster_name: curso-k8s-ci
 
       - name: Build python api image
-        run: docker build -t python-api:local examples/docker/python-api
+        run: make build-python-api
 
       - name: Load image into kind
-        run: kind load docker-image python-api:local --name curso-k8s-ci
+        run: make kind-load-python-api
 
       - name: Deploy with Kustomize
-        run: |
-          kubectl apply -k examples/k8s/kustomize-demo/overlays/dev
-          kubectl -n kustomize-dev rollout status deployment/python-api --timeout=180s
+        run: make deploy-kustomize-dev
 
       - name: Smoke test Kustomize deployment
-        run: |
-          kubectl -n kustomize-dev port-forward service/python-api 18080:80 >/tmp/pf-kustomize.log 2>&1 &
-          PF_PID=$!
-          trap "kill $PF_PID" EXIT
-          sleep 5
-          curl -fsS http://127.0.0.1:18080/health
+        run: make verify-kustomize-dev
 
       - name: Deploy with Helm
-        run: |
-          helm install python-api-demo examples/helm/python-api \
-            -n helm-demo \
-            --create-namespace \
-            -f examples/helm/python-api/values-dev.yaml \
-            --set image.tag=local
-          kubectl -n helm-demo rollout status deployment/python-api-demo-python-api --timeout=180s
+        run: make deploy-helm-dev
 
       - name: Smoke test Helm deployment
-        run: |
-          kubectl -n helm-demo port-forward service/python-api-demo-python-api 18081:80 >/tmp/pf-helm.log 2>&1 &
-          PF_PID=$!
-          trap "kill $PF_PID" EXIT
-          sleep 5
-          curl -fsS http://127.0.0.1:18081/health
+        run: make verify-helm-dev

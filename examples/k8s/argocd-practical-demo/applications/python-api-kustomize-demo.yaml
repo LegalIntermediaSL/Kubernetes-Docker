@@ -6,7 +6,7 @@ metadata:
 spec:
   project: curso-demo
   source:
-    repoURL: https://github.com/example/Kubernetes-Docker.git
+    repoURL: https://github.com/LegalIntermediaSL/Kubernetes-Docker.git
     targetRevision: main
     path: examples/k8s/kustomize-demo/overlays/demo
   destination:
@@ -16,3 +16,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

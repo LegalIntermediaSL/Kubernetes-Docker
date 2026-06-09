@@ -2,6 +2,35 @@
 
 Registro de trabajo, decisiones y próximos pasos del repositorio.
 
+## 2026-06-09
+
+### Trabajo realizado
+
+- Se ejecutó una validación operativa real en un clúster local `minikube` con perfil `curso-k8s-ci`.
+- Se comprobó en vivo el despliegue `Kustomize` de `examples/k8s/kustomize-demo/overlays/dev`.
+- Se comprobó en vivo el chart Helm `examples/helm/python-api/`.
+- La `python-api` quedó verificada en `/health` y `/metrics`.
+- Se instaló y validó `cert-manager`, incluyendo la creación del `Certificate` `python-api-tls`.
+- Se instaló y validó la pila de observabilidad con Prometheus, Alertmanager y Grafana.
+- Se aplicó y verificó el bloque práctico de Argo CD con `AppProject`, `Root Application` y aplicaciones hijas.
+- Se ajustaron los manifiestos de Argo CD para apuntar al remoto actual del repositorio.
+- Se documentó la validación real en `docs/validacion-operativa.md`.
+- Se añadió un `Makefile` para repetir el laboratorio avanzado con objetivos locales y de CI.
+- Se añadió `docs/06-laboratorio-local-avanzado.md` como guía ejecutable de la fase avanzada.
+- El workflow `kind-e2e.yml` quedó alineado con el `Makefile` para evitar duplicación entre CI y uso local.
+
+### Decisiones tomadas
+
+- La validación viva local se documenta aparte del temario para distinguir teoría, ejemplos y evidencia operativa.
+- El ejemplo de Argo CD mantiene la nota de que GitOps sincroniza desde Git remoto y no desde cambios no publicados del workspace local.
+- El comportamiento `Progressing` de un `Ingress` sin dirección publicada se trata como matiz de laboratorio local, no como fallo del ejemplo.
+- La automatización local debe vivir en el propio repositorio y no quedarse dispersa en comandos de bitácora.
+
+### Próximos pasos sugeridos
+
+- Publicar los cambios del repositorio remoto si se quiere que una instalación fresca de Argo CD consuma exactamente estos manifiestos corregidos.
+- Estandarizar un laboratorio local con `minikube tunnel` o equivalente si se quiere que las demos con `Ingress` aparezcan sanas también a nivel de health de Argo CD.
+
 ## 2026-06-08
 
 ### Trabajo realizado

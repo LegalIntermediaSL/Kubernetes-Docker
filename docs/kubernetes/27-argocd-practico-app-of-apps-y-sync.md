@@ -69,14 +69,15 @@ kubectl apply -n argocd -f examples/k8s/argocd-practical-demo/root-application.y
 kubectl get applications -n argocd
 ```
 
-## Que debes adaptar siempre
+## Que debes revisar antes de aplicar
 
-Los ejemplos del repositorio usan `repoURL` de muestra. Antes de aplicarlos, adapta:
+Los manifiestos del repositorio ya apuntan al remoto actual del curso, pero aun asi conviene revisar:
 
-- URL real del repositorio
+- `repoURL` si reutilizas la demo en otro proyecto
 - rama objetivo
 - namespaces de destino
-- paths
+- `paths`
+- disponibilidad real de las imagenes que referencia cada app
 
 ## Errores frecuentes
 
@@ -87,6 +88,7 @@ Suele ser un problema de:
 - path incorrecto
 - namespace inexistente
 - repoURL sin acceso
+- cambios locales todavia no publicados en Git remoto
 
 ### El chart renderiza en local pero Argo CD falla
 
@@ -95,6 +97,19 @@ Revisa:
 - `valueFiles`
 - permisos del proyecto
 - diferencias entre entorno local y cluster
+- si el cluster puede descargar o ya tiene cargada la imagen esperada
+
+### La app Helm queda en `Progressing` aunque responde
+
+En clusters locales pequeños, el `Ingress` puede quedarse sin direccion publicada.
+
+Eso suele dejar la aplicacion en `Progressing` dentro de Argo CD, aunque:
+
+- los pods esten `Running`
+- el `Service` funcione
+- `/health` responda por `port-forward`
+
+En `minikube`, normalmente hace falta `minikube tunnel` o una exposicion equivalente si quieres cerrar tambien la salud del `Ingress`.
 
 ### Demasiada magia en una sola aplicacion raiz
 

@@ -15,6 +15,7 @@ Los workflows en `.github/workflows/` forman una CI mínima y educativa. No inte
 - cómo validar antes de desplegar
 - cómo detectar roturas de YAML o Helm
 - cómo asegurar que ejemplos importantes siguen construyendo
+- cómo alinear la automatizacion local con la automatizacion de CI
 
 ## Qué comprueba cada workflow
 
@@ -23,3 +24,17 @@ Los workflows en `.github/workflows/` forman una CI mínima y educativa. No inte
 - `helm-validate.yml` ejecuta `helm lint` y `helm template` sobre los charts más importantes del repositorio.
 - `kind-e2e.yml` crea un cluster `kind`, carga una imagen local y verifica despliegues con `Kustomize` y Helm.
 - `publish-images.yml` construye y publica imágenes etiquetadas cuando el repositorio recibe un tag `v*`.
+
+## Relacion con el laboratorio local
+
+El repositorio tambien incluye un `Makefile` para repetir localmente una parte importante de estos pasos.
+
+Eso ayuda a que:
+
+- CI y trabajo local usen comandos coherentes
+- el alumno pueda depurar en su maquina antes de depender de GitHub Actions
+- la documentacion no se separe del camino realmente ejecutable
+
+Revisa:
+
+- [Laboratorio local avanzado](../06-laboratorio-local-avanzado.md)

@@ -2,6 +2,21 @@
 
 Este archivo registra los cambios relevantes del repositorio.
 
+## [1.1.1] - 2026-06-09
+
+### Añadido
+
+- `docs/validacion-operativa.md` con la validación real del repositorio sobre `minikube`.
+- `Makefile` para automatizar validaciones locales, despliegues del laboratorio avanzado e instalaciones base.
+- `docs/06-laboratorio-local-avanzado.md` como guía de ejecución local del bloque avanzado.
+
+### Cambiado
+
+- `examples/k8s/argocd-practical-demo/` actualizado para apuntar al remoto actual del repositorio y documentar mejor el uso local.
+- `docs/kubernetes/27-argocd-practico-app-of-apps-y-sync.md` ajustado para reflejar que el ejemplo ya usa el remoto real y para aclarar los matices de GitOps e `Ingress` en local.
+- `README.md` y `bitacora.md` actualizados para enlazar y resumir la validación operativa en vivo.
+- `.github/workflows/kind-e2e.yml` refactorizado para usar objetivos del `Makefile`.
+
 ## [0.1.0] - 2026-06-08
 
 ### Añadido

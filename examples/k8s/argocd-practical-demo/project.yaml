@@ -6,8 +6,10 @@ metadata:
 spec:
   description: Proyecto de ejemplo para apps del curso
   sourceRepos:
-    - https://github.com/example/Kubernetes-Docker.git
+    - https://github.com/LegalIntermediaSL/Kubernetes-Docker.git
   destinations:
+    - namespace: argocd
+      server: https://kubernetes.default.svc
     - namespace: demo
       server: https://kubernetes.default.svc
     - namespace: kustomize-demo
