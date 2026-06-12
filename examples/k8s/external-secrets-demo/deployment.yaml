@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secret-consumer
+  namespace: external-secrets-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secret-consumer
+  template:
+    metadata:
+      labels:
+        app: secret-consumer
+    spec:
+      containers:
+        - name: secret-consumer
+          image: busybox:1.36
+          command:
+            - /bin/sh
+            - -c
+            - |
+              while true; do
+                LEN="$(printf "%s" "${DB_PASSWORD}" | wc -c | tr -d ' ')"
+                echo "usuario=${DB_USERNAME} password_length=${LEN}"
+                sleep 30
+              done
+          env:
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials-local
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials-local
+                  key: password

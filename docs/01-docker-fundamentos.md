@@ -108,3 +108,6 @@ Cuando este documento ya te resulte natural, continúa con:
 - [Tutorial detallado de Docker](docker/07-tutorial-docker-paso-a-paso.md)
 - [Versionado y publicacion de imagenes](docker/08-versionado-y-publicacion.md)
 - [Seguridad de contenedores y hardening](docker/09-seguridad-de-contenedores-y-hardening.md)
+- [BuildKit, multi-stage y optimizacion](docker/10-buildkit-multi-stage-y-optimizacion.md)
+- [Debugging de runtime, redes y señales](docker/11-debugging-runtime-redes-y-senales.md)
+- [Volumenes, backup y limpieza operativa](docker/12-volumenes-backup-y-limpieza-operativa.md)

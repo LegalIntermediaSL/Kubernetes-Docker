@@ -125,3 +125,6 @@ Después de esta base, sigue con:
 - [cert-manager y TLS automatizado](kubernetes/26-cert-manager-y-tls-automatizado.md)
 - [Argo CD practico: app-of-apps y sync](kubernetes/27-argocd-practico-app-of-apps-y-sync.md)
 - [Observabilidad completa con Prometheus y Grafana](kubernetes/28-observabilidad-stack-completo.md)
+- [Backup, restore y disaster recovery](kubernetes/29-backup-restore-y-disaster-recovery.md)
+- [External Secrets y Secret Stores](kubernetes/30-external-secrets-y-secret-stores.md)
+- [KEDA y event-driven autoscaling](kubernetes/31-keda-y-event-driven-autoscaling.md)

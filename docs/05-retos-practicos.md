@@ -49,9 +49,50 @@ Objetivo:
 - usar el endpoint `/api/reset`
 - comprobar que la autenticación por header funciona
 
-## Nivel 3: Kubernetes intermedio
+### Reto 5: comparar imagen base y optimizada
 
-### Reto 5: romper un selector de `Service`
+Usa:
+
+- `examples/docker/python-api/`
+- `examples/docker/python-api-optimized/`
+
+Objetivo:
+
+- construir ambas imágenes
+- comparar `docker history`
+- explicar qué gana el enfoque multi-stage y qué coste de complejidad introduce
+
+### Reto 6: depurar una parada limpia
+
+Usa:
+
+- `examples/docker/runtime-debug-demo/`
+
+Objetivo:
+
+- lanzar el contenedor con una variable de entorno visible
+- seguir sus logs
+- detenerlo con `docker stop`
+- explicar qué señal recibió y qué implicación tiene para PID 1
+
+## Nivel 3: Docker avanzado y operación local
+
+### Reto 7: backup simple de un volumen Docker
+
+Usa:
+
+- `examples/docker/volume-backup-demo/`
+
+Objetivo:
+
+- generar datos en el volumen
+- crear un `.tgz`
+- restaurarlo en otro volumen
+- explicar por qué `down -v` cambia por completo el riesgo operativo
+
+## Nivel 4: Kubernetes intermedio
+
+### Reto 8: romper un selector de `Service`
 
 Usa:
 
@@ -63,7 +104,7 @@ Objetivo:
 - detectarlo con `kubectl get endpoints`
 - corregir labels o selector
 
-### Reto 6: readiness rota
+### Reto 9: readiness rota
 
 Usa:
 
@@ -73,7 +114,7 @@ Objetivo:
 
 - explicar por qué el pod está `Running` pero no `Ready`
 
-### Reto 7: `PVC` y persistencia
+### Reto 10: `PVC` y persistencia
 
 Usa:
 
@@ -83,9 +124,9 @@ Objetivo:
 
 - verificar que el contador sobrevive a la recreación del pod
 
-## Nivel 4: temas de nivel superior
+## Nivel 5: temas de nivel superior
 
-### Reto 8: mínimos permisos
+### Reto 11: mínimos permisos
 
 Usa:
 
@@ -95,7 +136,7 @@ Objetivo:
 
 - comprobar qué puede y qué no puede hacer la service account
 
-### Reto 9: leer una `NetworkPolicy`
+### Reto 12: leer una `NetworkPolicy`
 
 Usa:
 
@@ -105,7 +146,7 @@ Objetivo:
 
 - explicar qué tráfico queda permitido y cuál no
 
-### Reto 10: analizar un `StatefulSet`
+### Reto 13: analizar un `StatefulSet`
 
 Usa:
 
@@ -115,9 +156,33 @@ Objetivo:
 
 - describir por qué `demo-store-0` y `demo-store-1` no son pods intercambiables como los de un `Deployment`
 
-## Nivel 5: proyecto integral
+### Reto 14: seguir un `ExternalSecret`
 
-### Reto 11: comparar Compose y Kubernetes
+Usa:
+
+- `examples/k8s/external-secrets-demo/`
+
+Objetivo:
+
+- describir el flujo `SecretStore -> ExternalSecret -> Secret`
+- identificar qué pieza requiere RBAC minimo
+- explicar por qué la app consumidora no necesita saber nada del operador
+
+### Reto 15: elegir entre HPA y KEDA
+
+Usa:
+
+- `examples/k8s/scaling-demo/`
+- `examples/k8s/keda-demo/`
+
+Objetivo:
+
+- comparar el caso de CPU/memoria con el de `cron` o Prometheus
+- justificar cuándo introducirías KEDA y cuándo no
+
+## Nivel 6: proyecto integral
+
+### Reto 16: comparar Compose y Kubernetes
 
 Usa:
 
@@ -128,7 +193,7 @@ Objetivo:
 
 - explicar qué cambia entre red, configuración, exposición y observabilidad
 
-### Reto 12: renderizar el chart fullstack
+### Reto 17: renderizar el chart fullstack
 
 Usa:
 

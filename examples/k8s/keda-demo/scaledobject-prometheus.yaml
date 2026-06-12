@@ -1,0 +1,20 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: python-api-keda-prometheus
+  namespace: keda-demo
+spec:
+  scaleTargetRef:
+    name: python-api-keda
+  pollingInterval: 30
+  cooldownPeriod: 180
+  minReplicaCount: 1
+  maxReplicaCount: 5
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus-operated.observability.svc.cluster.local:9090
+        query: sum(rate(python_api_requests_total[2m]))
+        threshold: "0.5"
+        activationThreshold: "0.1"
+        ignoreNullValues: "false"

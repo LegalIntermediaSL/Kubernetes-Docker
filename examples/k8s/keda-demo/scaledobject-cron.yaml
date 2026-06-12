@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: python-api-keda-cron
+  namespace: keda-demo
+spec:
+  scaleTargetRef:
+    name: python-api-keda
+  minReplicaCount: 0
+  maxReplicaCount: 4
+  cooldownPeriod: 300
+  triggers:
+    - type: cron
+      metadata:
+        timezone: Europe/Madrid
+        start: "0 8 * * 1-5"
+        end: "0 20 * * 1-5"
+        desiredReplicas: "2"

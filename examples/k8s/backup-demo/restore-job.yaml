@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: backup-restore
+  namespace: backup-demo
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: restore
+          image: busybox:1.36
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -eu
+              LATEST="$(ls -1 /backup/archive/*.tgz 2>/dev/null | sort | tail -n 1)"
+              if [ -z "${LATEST}" ]; then
+                echo "No se encontro ningun backup"
+                exit 1
+              fi
+              rm -rf /source/restore
+              mkdir -p /source/restore
+              tar -xzf "${LATEST}" -C /source/restore
+              echo "Backup restaurado desde ${LATEST}"
+              find /source/restore -maxdepth 2 -type f -print
+          volumeMounts:
+            - name: source-data
+              mountPath: /source
+            - name: backup-archive
+              mountPath: /backup
+      volumes:
+        - name: source-data
+          persistentVolumeClaim:
+            claimName: source-data
+        - name: backup-archive
+          persistentVolumeClaim:
+            claimName: backup-archive

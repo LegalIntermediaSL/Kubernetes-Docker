@@ -2,6 +2,42 @@
 
 Este archivo registra los cambios relevantes del repositorio.
 
+## [1.3.0] - 2026-06-12
+
+### Añadido
+
+- `docs/docker/10-buildkit-multi-stage-y-optimizacion.md`.
+- `docs/docker/11-debugging-runtime-redes-y-senales.md`.
+- `docs/docker/12-volumenes-backup-y-limpieza-operativa.md`.
+- `examples/docker/python-api-optimized/`.
+- `examples/docker/runtime-debug-demo/`.
+- `examples/docker/volume-backup-demo/`.
+
+### Cambiado
+
+- `README.md` y `docs/temario-completo.md` ampliados para reflejar el cierre del bloque Docker avanzado y su integracion en la ruta principal.
+- `docs/01-docker-fundamentos.md` actualizado para enlazar los nuevos temas avanzados de Docker.
+- `docs/05-retos-practicos.md` ampliado con ejercicios de optimizacion, runtime debugging, backup de volumenes, `External Secrets` y KEDA.
+- `bitacora.md` actualizada con el cierre mas completo del temario.
+
+## [1.2.0] - 2026-06-12
+
+### Añadido
+
+- `docs/kubernetes/29-backup-restore-y-disaster-recovery.md`.
+- `docs/kubernetes/30-external-secrets-y-secret-stores.md`.
+- `docs/kubernetes/31-keda-y-event-driven-autoscaling.md`.
+- `examples/k8s/backup-demo/`.
+- `examples/k8s/external-secrets-demo/`.
+- `examples/k8s/keda-demo/`.
+
+### Cambiado
+
+- `README.md` ampliado para enlazar los nuevos modulos y laboratorios avanzados.
+- `docs/temario-completo.md` reorganizado para reflejar la nueva capa de operacion aplicada.
+- `docs/02-kubernetes-fundamentos.md` actualizado para incluir la continuidad del recorrido avanzado.
+- `bitacora.md` actualizada con la nueva fase de expansion del curso.
+
 ## [1.1.1] - 2026-06-09
 
 ### Añadido

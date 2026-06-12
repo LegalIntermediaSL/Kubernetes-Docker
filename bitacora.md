@@ -2,6 +2,50 @@
 
 Registro de trabajo, decisiones y próximos pasos del repositorio.
 
+## 2026-06-12
+
+### Trabajo realizado
+
+- Se completó la ampliación del bloque Docker con tres módulos nuevos:
+  - `docs/docker/10-buildkit-multi-stage-y-optimizacion.md`
+  - `docs/docker/11-debugging-runtime-redes-y-senales.md`
+  - `docs/docker/12-volumenes-backup-y-limpieza-operativa.md`
+- Se añadieron tres laboratorios Docker complementarios:
+  - `examples/docker/python-api-optimized/`
+  - `examples/docker/runtime-debug-demo/`
+  - `examples/docker/volume-backup-demo/`
+- Se amplió `docs/05-retos-practicos.md` para cubrir optimización de imágenes, runtime debugging, backup de volúmenes, `External Secrets` y KEDA.
+- Se cerró mejor la navegación global del curso en `README.md`, `docs/temario-completo.md` y `docs/01-docker-fundamentos.md`.
+- Se añadieron tres modulos nuevos de Kubernetes avanzado y operacion aplicada:
+  - `docs/kubernetes/29-backup-restore-y-disaster-recovery.md`
+  - `docs/kubernetes/30-external-secrets-y-secret-stores.md`
+  - `docs/kubernetes/31-keda-y-event-driven-autoscaling.md`
+- Se añadieron tres laboratorios nuevos:
+  - `examples/k8s/backup-demo/`
+  - `examples/k8s/external-secrets-demo/`
+  - `examples/k8s/keda-demo/`
+- El laboratorio de backup quedo centrado en `PVC`, `CronJob` y `Job` de restore para explicar el flujo completo sin depender de herramientas externas.
+- El laboratorio de External Secrets quedo planteado con sincronizacion entre namespaces para enseñar el modelo `SecretStore -> ExternalSecret -> Secret`.
+- El laboratorio de KEDA quedo dividido en dos rutas:
+  - escalado por horario con `cron`
+  - escalado por metrica externa con Prometheus
+- Se actualizo la navegacion principal del repositorio en `README.md`, `docs/temario-completo.md` y `docs/02-kubernetes-fundamentos.md`.
+
+### Decisiones tomadas
+
+- El cierre del temario no se limita a añadir mas Kubernetes; tambien refuerza Docker en optimizacion, diagnostico y operacion local para equilibrar el curso.
+- Los laboratorios Docker nuevos se dejaron pequenos y didacticos para que sirvan tanto en local como en explicaciones de clase.
+- La ampliacion del curso sigue priorizando contenido practico y ejemplos ejecutables antes que texto puramente teorico.
+- Los ejemplos de operadores avanzados se dejaron en variantes didacticas y locales para no depender de cloud providers concretos.
+- El ejemplo de KEDA con Prometheus se mantiene con `minReplicaCount: 1` porque una metrica scrapeada desde los pods no es una buena base para escalar a `0`.
+
+### Próximos pasos sugeridos
+
+- Si el curso sigue creciendo, el siguiente salto ya sería especialización: supply chain security, `SBOM`, `Trivy`, `Sealed Secrets` o proveedores cloud concretos.
+- Añadir una capa mas operativa de backups de base de datos con `pg_dump` o herramientas equivalentes si se quiere profundizar en persistencia real.
+- Sumar un bloque de `Sealed Secrets` o `SOPS` si el curso quiere cubrir tambien secretos cifrados en Git.
+- Conectar KEDA con una cola real como Redis o RabbitMQ para ampliar el bloque de event-driven autoscaling.
+
 ## 2026-06-09
 
 ### Trabajo realizado

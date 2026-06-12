@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: python-api-keda
+  namespace: keda-demo
+  labels:
+    release: observability
+spec:
+  selector:
+    matchLabels:
+      app: python-api-keda
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 30s

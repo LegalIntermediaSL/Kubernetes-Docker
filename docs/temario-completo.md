@@ -20,6 +20,9 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 6. [Tutorial detallado de Docker](docker/07-tutorial-docker-paso-a-paso.md)
 7. [Versionado y publicacion de imagenes](docker/08-versionado-y-publicacion.md)
 8. [Seguridad de contenedores y hardening](docker/09-seguridad-de-contenedores-y-hardening.md)
+9. [BuildKit, multi-stage y optimizacion](docker/10-buildkit-multi-stage-y-optimizacion.md)
+10. [Debugging de runtime, redes y señales](docker/11-debugging-runtime-redes-y-senales.md)
+11. [Volumenes, backup y limpieza operativa](docker/12-volumenes-backup-y-limpieza-operativa.md)
 
 ### Objetivos del bloque
 
@@ -29,6 +32,9 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 - Diagnosticar errores frecuentes en tiempo de build y runtime.
 - Versionar y publicar imágenes con mejor trazabilidad.
 - Entender el hardening básico de una imagen contenedorizada.
+- Optimizar una imagen con mejor cache, contexto y stages.
+- Distinguir problemas de runtime, red y señales de parada.
+- Tratar los volúmenes Docker como datos que requieren cuidado, backup y limpieza con criterio.
 
 ## Bloque 3: Kubernetes en profundidad
 
@@ -96,6 +102,9 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 8. [cert-manager y TLS automatizado](kubernetes/26-cert-manager-y-tls-automatizado.md)
 9. [Argo CD practico: app-of-apps y sync](kubernetes/27-argocd-practico-app-of-apps-y-sync.md)
 10. [Observabilidad completa con Prometheus y Grafana](kubernetes/28-observabilidad-stack-completo.md)
+11. [Backup, restore y disaster recovery](kubernetes/29-backup-restore-y-disaster-recovery.md)
+12. [External Secrets y Secret Stores](kubernetes/30-external-secrets-y-secret-stores.md)
+13. [KEDA y event-driven autoscaling](kubernetes/31-keda-y-event-driven-autoscaling.md)
 
 ### Objetivos del bloque
 
@@ -103,6 +112,7 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 - Entender cuando un tema avanzado aporta valor y cuando aun no hace falta.
 - Dar un puente hacia GitOps, gobierno, TLS, metricas y trafico avanzado.
 - Mostrar una fase avanzada mas operativa y ejecutable sobre la base del curso.
+- Introducir recuperacion, rotacion de secretos y escalado por eventos como preocupaciones reales de operacion.
 
 ## Bloque 7: CI y validacion avanzada
 
@@ -129,6 +139,9 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 - `examples/docker/fullstack-demo/`
 - `examples/docker/hola-nginx/`
 - `examples/docker/python-api/`
+- `examples/docker/python-api-optimized/`
+- `examples/docker/runtime-debug-demo/`
+- `examples/docker/volume-backup-demo/`
 - `examples/docker/compose-web-api/`
 
 ### Helm
@@ -138,13 +151,16 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 
 ### Kubernetes
 
+- `examples/k8s/backup-demo/`
 - `examples/k8s/argocd-practical-demo/`
 - `examples/k8s/cert-manager-demo/`
+- `examples/k8s/external-secrets-demo/`
 - `examples/k8s/fullstack-demo/`
 - `examples/k8s/gitops-demo/`
 - `examples/k8s/helm-demo/`
 - `examples/k8s/hola-nginx/`
 - `examples/k8s/ingress-tls-demo/`
+- `examples/k8s/keda-demo/`
 - `examples/k8s/kustomize-demo/`
 - `examples/k8s/network-policy-demo/`
 - `examples/k8s/observability-stack-demo/`
@@ -213,6 +229,7 @@ Al final del temario deberías poder:
 
 - Escribir un `Dockerfile` razonable sin copiarlo de memoria.
 - Construir y ejecutar una aplicación con múltiples servicios.
+- Explicar por qué una imagen optimizada separa build y runtime y cómo inspeccionarla.
 - Crear manifiestos YAML básicos sin depender de un generador.
 - Entender por qué un pod no arranca o por qué un service no enruta.
 - Diseñar un despliegue simple con configuración externa y health checks.
@@ -220,3 +237,5 @@ Al final del temario deberías poder:
 - Explicar qué cambia al pasar del bloque intermedio a temas de plataforma de nivel superior.
 - Describir un flujo razonable de versionado, publicación, GitOps y gobierno básico.
 - Entender cuándo conviene añadir `Kustomize`, `cert-manager`, Argo CD y observabilidad más completa.
+- Plantear una estrategia minima de backup y restore, sincronizar secretos sin meterlos en YAML plano y distinguir cuando KEDA aporta valor frente a un `HPA` clasico.
+- Hacer una copia simple de un volumen Docker, restaurarla y diferenciar limpieza segura de borrado destructivo.
