@@ -88,6 +88,9 @@ Secuencia razonable:
 4. CI/CD y GitOps
 5. Service mesh solo como extension avanzada
 
-## Cierre del bloque avanzado
+## Siguiente paso
 
-Con este modulo, el curso ya cubre no solo el camino basico e intermedio, sino tambien una capa de orientacion hacia plataforma moderna y operacion avanzada.
+Si este modulo te ayuda a entender por que aparecen capas mas sofisticadas de trafico y despliegue, los siguientes enlaces encajan muy bien:
+
+- [Gateway API y HTTPRoute](34-gateway-api-y-httproute.md)
+- [Progressive delivery con Argo Rollouts](35-progressive-delivery-con-argo-rollouts.md)

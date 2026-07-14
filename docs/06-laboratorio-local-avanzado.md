@@ -108,6 +108,24 @@ make verify-cert-manager-demo
 
 La demo usa el flujo `self-signed` del repositorio para no depender de DNS publico.
 
+## 6.1. Validar mas laboratorios base
+
+Si quieres ampliar la cobertura del laboratorio local con ejemplos basicos del curso:
+
+```bash
+make deploy-configmap-secret-demo
+make verify-configmap-secret-demo
+make deploy-job-cronjob-demo
+make verify-job-cronjob-demo
+```
+
+Esto comprueba tambien:
+
+- configuracion externa por `ConfigMap`
+- lectura de secretos en runtime
+- finalizacion correcta de un `Job`
+- presencia operativa del `CronJob` base
+
 ## 7. Instalar y validar observabilidad
 
 ```bash

@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: python-api-split
+  namespace: gateway-demo
+spec:
+  parentRefs:
+    - name: app-gateway
+  hostnames:
+    - split-demo.local
+  rules:
+    - backendRefs:
+        - name: python-api-v1
+          port: 80
+          weight: 90
+        - name: python-api-v2
+          port: 80
+          weight: 10

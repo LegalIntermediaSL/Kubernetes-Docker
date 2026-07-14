@@ -39,3 +39,15 @@ jobs:
 
       - name: Smoke test Helm deployment
         run: make verify-helm-dev
+
+      - name: Deploy ConfigMap and Secret demo
+        run: make deploy-configmap-secret-demo
+
+      - name: Smoke test ConfigMap and Secret demo
+        run: make verify-configmap-secret-demo
+
+      - name: Deploy Job and CronJob demo
+        run: make deploy-job-cronjob-demo
+
+      - name: Smoke test Job and CronJob demo
+        run: make verify-job-cronjob-demo

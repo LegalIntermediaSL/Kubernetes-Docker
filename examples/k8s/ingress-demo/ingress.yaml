@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-demo
+  namespace: ingress-demo
 spec:
   rules:
     - host: demo.local

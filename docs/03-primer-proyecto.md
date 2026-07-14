@@ -11,6 +11,7 @@ En este ejercicio vamos a recorrer el flujo completo:
 
 Archivos implicados:
 
+- `examples/k8s/hola-nginx/namespace.yaml`
 - `examples/docker/hola-nginx/Dockerfile`
 - `examples/docker/hola-nginx/index.html`
 - `examples/k8s/hola-nginx/deployment.yaml`
@@ -79,9 +80,9 @@ kubectl apply -f examples/k8s/hola-nginx/
 Comprueba el estado:
 
 ```bash
-kubectl get pods
-kubectl get deployments
-kubectl get services
+kubectl get pods -n hola-nginx-demo
+kubectl get deployments -n hola-nginx-demo
+kubectl get services -n hola-nginx-demo
 ```
 
 ## Topologia dentro del cluster
@@ -99,7 +100,7 @@ flowchart TB
 Usaremos `port-forward`:
 
 ```bash
-kubectl port-forward service/hola-nginx 8080:80
+kubectl port-forward -n hola-nginx-demo service/hola-nginx 8080:80
 ```
 
 Luego visita:
@@ -169,7 +170,7 @@ kubectl apply -f examples/k8s/hola-nginx/deployment.yaml
 ### Ver el rollout
 
 ```bash
-kubectl rollout status deployment/hola-nginx
+kubectl rollout status deployment/hola-nginx -n hola-nginx-demo
 ```
 
 ## Limpieza

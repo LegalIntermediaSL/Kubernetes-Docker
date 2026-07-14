@@ -98,18 +98,20 @@ Aplica los manifiestos:
 kubectl apply -f examples/k8s/hola-nginx/
 ```
 
+Este laboratorio crea sus recursos en el namespace `hola-nginx-demo`.
+
 Comprueba recursos:
 
 ```bash
-kubectl get deployments
-kubectl get pods
-kubectl get services
+kubectl get deployments -n hola-nginx-demo
+kubectl get pods -n hola-nginx-demo
+kubectl get services -n hola-nginx-demo
 ```
 
 Inspecciona el deployment:
 
 ```bash
-kubectl describe deployment hola-nginx
+kubectl describe deployment hola-nginx -n hola-nginx-demo
 ```
 
 ## Paso 4: acceder con `port-forward`
@@ -117,7 +119,7 @@ kubectl describe deployment hola-nginx
 Expone el servicio:
 
 ```bash
-kubectl port-forward service/hola-nginx 8080:80
+kubectl port-forward -n hola-nginx-demo service/hola-nginx 8080:80
 ```
 
 En otra terminal:
@@ -158,14 +160,14 @@ Aplica de nuevo:
 
 ```bash
 kubectl apply -f examples/k8s/hola-nginx/deployment.yaml
-kubectl rollout status deployment/hola-nginx
-kubectl get pods
+kubectl rollout status deployment/hola-nginx -n hola-nginx-demo
+kubectl get pods -n hola-nginx-demo
 ```
 
 Tambien puedes ver el historial:
 
 ```bash
-kubectl rollout history deployment/hola-nginx
+kubectl rollout history deployment/hola-nginx -n hola-nginx-demo
 ```
 
 ## Paso 6: desplegar la API Python en Kubernetes
@@ -190,18 +192,20 @@ Aplica los manifiestos:
 kubectl apply -f examples/k8s/python-api/
 ```
 
+Este ejemplo usa el namespace `python-api-demo`.
+
 Comprueba el estado:
 
 ```bash
-kubectl get deployments
-kubectl get pods
-kubectl get services
+kubectl get deployments -n python-api-demo
+kubectl get pods -n python-api-demo
+kubectl get services -n python-api-demo
 ```
 
 Haz `port-forward`:
 
 ```bash
-kubectl port-forward service/python-api 8000:80
+kubectl port-forward -n python-api-demo service/python-api 8000:80
 ```
 
 Pruebas:
@@ -229,15 +233,15 @@ kubectl apply -f examples/k8s/configmap-secret/
 Comprueba:
 
 ```bash
-kubectl get configmaps
-kubectl get secrets
-kubectl get deployments
+kubectl get configmaps -n config-demo
+kubectl get secrets -n config-demo
+kubectl get deployments -n config-demo
 ```
 
 Expone el servicio:
 
 ```bash
-kubectl port-forward service/env-demo 8081:80
+kubectl port-forward -n config-demo service/env-demo 8081:80
 ```
 
 Prueba:
@@ -262,12 +266,18 @@ kubectl apply -f examples/k8s/ingress-demo/
 Comprueba:
 
 ```bash
-kubectl get ingress
-kubectl get services
-kubectl get pods
+kubectl get ingress -n ingress-demo
+kubectl get services -n ingress-demo
+kubectl get pods -n ingress-demo
 ```
 
-Este ejemplo requiere un controlador Ingress para funcionar de verdad por host HTTP. Si no lo tienes, usa `port-forward` al service y entiende el Ingress como manifiesto de enrutamiento.
+Este ejemplo requiere un controlador Ingress para funcionar de verdad por host HTTP. Si no lo tienes, usa `port-forward` al service:
+
+```bash
+kubectl port-forward -n ingress-demo service/ingress-demo 8082:80
+```
+
+y entiende el Ingress como manifiesto de enrutamiento.
 
 ## Vista mental de Service e Ingress
 
@@ -290,15 +300,15 @@ kubectl apply -f examples/k8s/job-cronjob/
 Revisa:
 
 ```bash
-kubectl get jobs
-kubectl get cronjobs
-kubectl get pods
+kubectl get jobs -n batch-demo
+kubectl get cronjobs -n batch-demo
+kubectl get pods -n batch-demo
 ```
 
 Mira logs del Job:
 
 ```bash
-kubectl logs job/saludo-job
+kubectl logs -n batch-demo job/saludo-job
 ```
 
 Aqui ves una diferencia importante:
@@ -309,13 +319,13 @@ Aqui ves una diferencia importante:
 
 ## Paso 10: depuracion guiada
 
-Cuando un pod falle, sigue este orden:
+Cuando un pod falle, sigue este orden dentro del namespace del laboratorio:
 
 ```bash
-kubectl get pods
-kubectl describe pod <pod_name>
-kubectl logs <pod_name>
-kubectl get events --sort-by=.metadata.creationTimestamp
+kubectl get pods -n <namespace>
+kubectl describe pod -n <namespace> <pod_name>
+kubectl logs -n <namespace> <pod_name>
+kubectl get events -n <namespace> --sort-by=.metadata.creationTimestamp
 ```
 
 ### Casos tipicos

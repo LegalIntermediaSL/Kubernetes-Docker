@@ -141,6 +141,7 @@ kubectl get endpoints
 
 ## Siguiente paso
 
-Cuando el trafico de entrada ya esta claro, el siguiente salto operativo suele ser automatizar el despliegue y la reconciliacion declarativa:
+Cuando el trafico de entrada ya esta claro, el siguiente salto puede ir por dos caminos:
 
+- [Gateway API y HTTPRoute](34-gateway-api-y-httproute.md)
 - [GitOps: Argo CD y Flux](21-gitops-intro-argocd-y-flux.md)

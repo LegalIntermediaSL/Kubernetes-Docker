@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: saludo-job
+  namespace: batch-demo
 spec:
   template:
     spec:

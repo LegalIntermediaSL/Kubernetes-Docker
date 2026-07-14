@@ -43,34 +43,36 @@ Su trabajo consiste en reconciliar ambos.
 kubectl apply -f examples/k8s/hola-nginx/
 ```
 
+Este ejemplo crea sus recursos en el namespace `hola-nginx-demo`.
+
 ### Ver pods
 
 ```bash
-kubectl get pods
+kubectl get pods -n hola-nginx-demo
 ```
 
 ### Ver deployments
 
 ```bash
-kubectl get deployments
+kubectl get deployments -n hola-nginx-demo
 ```
 
 ### Ver services
 
 ```bash
-kubectl get services
+kubectl get services -n hola-nginx-demo
 ```
 
 ### Describir un recurso
 
 ```bash
-kubectl describe pod <pod_name>
+kubectl describe pod -n hola-nginx-demo <pod_name>
 ```
 
 ### Ver logs
 
 ```bash
-kubectl logs <pod_name>
+kubectl logs -n hola-nginx-demo <pod_name>
 ```
 
 ## Qué contiene nuestro ejemplo
@@ -85,7 +87,7 @@ Esto nos permite aprender una topología básica y luego acceder a la app con `p
 ## Acceso local con port-forward
 
 ```bash
-kubectl port-forward service/hola-nginx 8080:80
+kubectl port-forward -n hola-nginx-demo service/hola-nginx 8080:80
 ```
 
 Después puedes abrir:
@@ -128,3 +130,8 @@ Después de esta base, sigue con:
 - [Backup, restore y disaster recovery](kubernetes/29-backup-restore-y-disaster-recovery.md)
 - [External Secrets y Secret Stores](kubernetes/30-external-secrets-y-secret-stores.md)
 - [KEDA y event-driven autoscaling](kubernetes/31-keda-y-event-driven-autoscaling.md)
+- [Disponibilidad, scheduling y cuotas](kubernetes/32-disponibilidad-scheduling-y-cuotas.md)
+- [Supply chain, Trivy, SBOM y firma](kubernetes/33-supply-chain-trivy-sbom-y-firma.md)
+- [Gateway API y HTTPRoute](kubernetes/34-gateway-api-y-httproute.md)
+- [Progressive delivery con Argo Rollouts](kubernetes/35-progressive-delivery-con-argo-rollouts.md)
+- [SOPS, Sealed Secrets y GitOps seguro](kubernetes/36-sops-sealed-secrets-y-gitops-seguro.md)

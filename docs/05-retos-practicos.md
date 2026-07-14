@@ -204,6 +204,73 @@ Objetivo:
 - renderizar `dev`, `demo` y `prod`
 - comparar réplicas, host y configuración
 
+## Nivel 7: plataforma y supply chain
+
+### Reto 18: leer cuotas y defaults de namespace
+
+Usa:
+
+- `examples/k8s/scheduling-policy-demo/`
+
+Objetivo:
+
+- explicar la diferencia entre `LimitRange` y `ResourceQuota`
+- identificar que pieza mete defaults y cual rechaza exceso agregado
+- justificar por que el ejemplo usa `preferred` y `ScheduleAnyway` en vez de reglas duras
+
+### Reto 19: disenar una promocion minima con evidencia
+
+Usa:
+
+- `examples/docker/python-api/`
+- [Supply chain, Trivy, SBOM y firma](kubernetes/33-supply-chain-trivy-sbom-y-firma.md)
+
+Objetivo:
+
+- proponer un flujo simple `build -> scan -> SBOM -> sign -> verify`
+- distinguir que haria CI y que verificaria una politica de plataforma
+- explicar por que una firma no sustituye ni al escaneo ni al control de secretos
+
+### Reto 20: decidir entre `Ingress` y `Gateway API`
+
+Usa:
+
+- `examples/k8s/ingress-demo/`
+- `examples/k8s/gateway-api-demo/`
+
+Objetivo:
+
+- explicar que separa `Gateway`, `GatewayClass` y `HTTPRoute`
+- identificar cuando un `Ingress` sencillo sigue siendo suficiente
+- justificar cuando el split por pesos aporta valor real
+
+### Reto 21: describir un rollout con menor blast radius
+
+Usa:
+
+- `examples/k8s/argo-rollouts-demo/`
+- [Progressive delivery con Argo Rollouts](kubernetes/35-progressive-delivery-con-argo-rollouts.md)
+
+Objetivo:
+
+- comparar `RollingUpdate`, `blue-green` y `canary`
+- explicar por que el canary basico reparte por replicas y no por trafico exacto
+- justificar que observabilidad minima pedirias antes de automatizar promotion o rollback
+
+### Reto 22: elegir estrategia de secretos para GitOps
+
+Usa:
+
+- `examples/k8s/sops-demo/`
+- `examples/k8s/sealed-secrets-demo/`
+- `examples/k8s/external-secrets-demo/`
+
+Objetivo:
+
+- explicar la diferencia entre ciphertext en Git, secreto sellado para cluster y referencia a fuente externa
+- justificar cuando escogerias `SOPS`, `Sealed Secrets` o `External Secrets`
+- identificar por que Argo CD recomienda poblar secretos en el cluster destino
+
 ## Cómo usar estos retos
 
 La recomendación es resolverlos así:

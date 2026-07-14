@@ -1,0 +1,3 @@
+creation_rules:
+  - path_regex: .*secret.*\.yaml$
+    age: age1reemplaza-por-tu-clave-publica

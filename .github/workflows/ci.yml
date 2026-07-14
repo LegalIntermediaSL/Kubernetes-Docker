@@ -11,13 +11,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install validation dependencies
-        run: pip install pyyaml
+      - name: Install Python validation and docs dependencies
+        run: pip install -r requirements-docs.txt
 
       - name: Validate notebook JSON
         run: |
@@ -41,6 +44,16 @@ jobs:
               print("OK", path)
           PY
 
+      - name: Offline semantic validation for core Kubernetes manifests
+        run: |
+          python scripts/validate_k8s_examples.py
+          kubectl kustomize examples/k8s/kustomize-demo/overlays/dev > /dev/null
+          echo "OK examples/k8s/kustomize-demo/overlays/dev"
+          kubectl kustomize examples/k8s/kustomize-demo/overlays/demo > /dev/null
+          echo "OK examples/k8s/kustomize-demo/overlays/demo"
+          kubectl kustomize examples/k8s/kustomize-demo/overlays/prod > /dev/null
+          echo "OK examples/k8s/kustomize-demo/overlays/prod"
+
       - name: Validate Docker Compose examples
         run: |
           if docker compose version > /dev/null 2>&1; then
@@ -58,3 +71,6 @@ jobs:
         run: |
           python -m py_compile examples/docker/python-api/app.py
           python -m py_compile examples/docker/fullstack-demo/api/app.py
+
+      - name: Build MkDocs site
+        run: mkdocs build --strict

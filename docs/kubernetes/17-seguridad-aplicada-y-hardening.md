@@ -121,3 +121,4 @@ Combina este bloque con:
 
 - [RBAC, NetworkPolicies y aislamiento](12-rbac-network-policies-y-aislamiento.md)
 - [Observabilidad práctica](18-observabilidad-practica.md)
+- [Supply chain, Trivy, SBOM y firma](33-supply-chain-trivy-sbom-y-firma.md)

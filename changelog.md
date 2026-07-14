@@ -2,6 +2,104 @@
 
 Este archivo registra los cambios relevantes del repositorio.
 
+## [1.6.0] - 2026-06-22
+
+### Añadido
+
+- `docs/kubernetes/36-sops-sealed-secrets-y-gitops-seguro.md`.
+- `examples/k8s/sops-demo/` con `Secret` plano de entrada, plantilla `SOPS` y manifiesto cifrado ilustrativo.
+- `examples/k8s/sealed-secrets-demo/` con `Secret` de entrada y `SealedSecret` ilustrativo.
+
+### Cambiado
+
+- `mkdocs.yml`, `README.md`, `docs/index.md` y `docs/temario-completo.md` ampliados para enlazar la nueva especializacion de GitOps seguro.
+- `docs/kubernetes/21-gitops-intro-argocd-y-flux.md` y `docs/kubernetes/30-external-secrets-y-secret-stores.md` actualizados para conectar mejor secretos y reconciliacion.
+- `docs/05-retos-practicos.md` ampliado con un reto para elegir entre `SOPS`, `Sealed Secrets` y `External Secrets`.
+- `examples/k8s/README.md` actualizado con los nuevos laboratorios.
+
+## [1.5.0] - 2026-06-22
+
+### Añadido
+
+- `docs/kubernetes/34-gateway-api-y-httproute.md`.
+- `docs/kubernetes/35-progressive-delivery-con-argo-rollouts.md`.
+- `examples/k8s/gateway-api-demo/` con `Gateway`, `HTTPRoute`, backends v1/v2 y split de trafico por pesos.
+- `examples/k8s/argo-rollouts-demo/` con rutas `blue-green` y `canary`.
+
+### Cambiado
+
+- `mkdocs.yml`, `README.md`, `docs/index.md` y `docs/temario-completo.md` ampliados para enlazar la nueva capa de routing moderno y progressive delivery.
+- `docs/02-kubernetes-fundamentos.md`, `docs/kubernetes/20-ingress-tls-y-exposicion-avanzada.md` y `docs/kubernetes/24-service-mesh-introduccion.md` actualizados para mejorar continuidad pedagógica.
+- `docs/05-retos-practicos.md` ampliado con retos sobre `Gateway API` y Argo Rollouts.
+- `examples/k8s/README.md` actualizado con los nuevos laboratorios.
+
+## [1.4.0] - 2026-06-22
+
+### Añadido
+
+- `docs/kubernetes/32-disponibilidad-scheduling-y-cuotas.md`.
+- `docs/kubernetes/33-supply-chain-trivy-sbom-y-firma.md`.
+- `examples/k8s/scheduling-policy-demo/` con `Namespace`, `PriorityClass`, `LimitRange`, `ResourceQuota`, `Deployment`, `PodDisruptionBudget` y pods de prueba para defaults y cuota.
+
+### Cambiado
+
+- `mkdocs.yml`, `README.md`, `docs/index.md` y `docs/temario-completo.md` ampliados para enlazar los nuevos modulos.
+- `docs/02-kubernetes-fundamentos.md`, `docs/kubernetes/11-probes-recursos-y-scheduling.md` y `docs/kubernetes/17-seguridad-aplicada-y-hardening.md` actualizados para conectar mejor la ruta avanzada.
+- `examples/k8s/README.md` actualizado con el nuevo laboratorio de scheduling y cuotas.
+- `scripts/validate_k8s_examples.py` ampliado para validar `PodDisruptionBudget`, `PriorityClass`, `LimitRange` y `ResourceQuota`.
+
+## [1.3.3] - 2026-06-22
+
+### Añadido
+
+- `mkdocs.yml` para publicar la documentacion como sitio MkDocs.
+- `requirements-docs.txt` con dependencias de documentacion.
+- `docs/index.md` como portada del sitio.
+- `docs/assets/stylesheets/extra.css` para personalizar la portada y el ancho de lectura.
+
+### Cambiado
+
+- `Makefile` ampliado con `docs-serve`, `docs-build` y `docs-check`.
+- `.github/workflows/ci.yml` ampliado para construir el sitio con `mkdocs build --strict`.
+- `README.md` actualizado con instrucciones para servir y validar la documentacion localmente.
+- `.gitignore` actualizado para ignorar `site/`.
+
+## [1.3.2] - 2026-06-21
+
+### Añadido
+
+- `namespace.yaml` en los laboratorios base de Kubernetes:
+  - `examples/k8s/hola-nginx/`
+  - `examples/k8s/python-api/`
+  - `examples/k8s/configmap-secret/`
+  - `examples/k8s/ingress-demo/`
+  - `examples/k8s/job-cronjob/`
+- `scripts/validate_k8s_examples.py` para validacion offline mas estricta de manifests Kubernetes nativos.
+- nuevos objetivos del `Makefile` para cubrir `ConfigMap`/`Secret` y `Job`/`CronJob` en laboratorio local y CI.
+
+### Cambiado
+
+- manifests base de Kubernetes actualizados para usar namespaces explicitos en lugar del namespace por defecto.
+- `docs/02-kubernetes-fundamentos.md`, `docs/03-primer-proyecto.md` y `docs/kubernetes/08-tutorial-kubernetes-paso-a-paso.md` actualizados al nuevo flujo con namespaces.
+- `.github/workflows/ci.yml` endurecido con validacion semantica offline y render de overlays `Kustomize`.
+- `.github/workflows/kind-e2e.yml` ampliado con smoke tests de `ConfigMap`/`Secret` y `Job`/`CronJob`.
+- `docs/06-laboratorio-local-avanzado.md` ampliado con los nuevos checks de laboratorio base.
+
+## [1.3.1] - 2026-06-13
+
+### Añadido
+
+- `examples/README.md` como indice general de laboratorios.
+- `examples/docker/README.md`, `examples/k8s/README.md` y `examples/helm/README.md` como indices por tecnologia.
+- `README.md` especificos para `examples/docker/hola-nginx/`, `examples/docker/python-api/`, `examples/k8s/hola-nginx/`, `examples/k8s/configmap-secret/`, `examples/k8s/ingress-demo/` y `examples/k8s/job-cronjob/`.
+
+### Cambiado
+
+- `README.md` actualizado para presentar el curso base como recorrido ya completado y para enlazar los nuevos indices de laboratorios.
+- `docs/temario-completo.md` ajustado para tratar el roadmap como trazabilidad historica y no como lista de pendientes del curso base.
+- `docs/plan-expansion.md` aclarado como documento historico de diseno del proyecto.
+- `bitacora.md` actualizada con el cierre documental del proyecto.
+
 ## [1.3.0] - 2026-06-12
 
 ### Añadido

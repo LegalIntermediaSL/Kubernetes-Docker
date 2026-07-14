@@ -6,10 +6,13 @@ MINIKUBE_PROFILE ?= curso-k8s-ci
 PYTHON_API_IMAGE ?= python-api:local
 PYTHON_API_DEMO_IMAGE ?= ghcr.io/example/kubernetes-docker-python-api:1.0.0
 
-.PHONY: help check-prereqs kind-up kind-load-python-api minikube-up minikube-enable-ingress minikube-load-python-api minikube-load-python-api-demo-tag build-python-api deploy-kustomize-dev verify-kustomize-dev deploy-helm-dev verify-helm-dev install-cert-manager deploy-cert-manager-demo verify-cert-manager-demo install-argocd deploy-argocd-demo-apps-local deploy-argocd-demo-root install-observability deploy-observability-demo verify-grafana status
+.PHONY: help docs-serve docs-build docs-check check-prereqs kind-up kind-load-python-api minikube-up minikube-enable-ingress minikube-load-python-api minikube-load-python-api-demo-tag build-python-api deploy-kustomize-dev verify-kustomize-dev deploy-helm-dev verify-helm-dev deploy-configmap-secret-demo verify-configmap-secret-demo deploy-job-cronjob-demo verify-job-cronjob-demo install-cert-manager deploy-cert-manager-demo verify-cert-manager-demo install-argocd deploy-argocd-demo-apps-local deploy-argocd-demo-root install-observability deploy-observability-demo verify-grafana status
 
 help:
 	@echo "Objetivos disponibles:"
+	@echo "  make docs-serve                    Sirve la documentacion local con MkDocs"
+	@echo "  make docs-build                    Construye el sitio estatico en site/"
+	@echo "  make docs-check                    Construye la documentacion en modo estricto"
 	@echo "  make check-prereqs                 Verifica herramientas locales"
 	@echo "  make kind-up                       Crea un cluster kind si no existe"
 	@echo "  make kind-load-python-api          Carga python-api:local en kind"
@@ -23,6 +26,10 @@ help:
 	@echo "  make verify-kustomize-dev          Verifica /health y /metrics del despliegue Kustomize"
 	@echo "  make deploy-helm-dev               Instala el chart Helm en helm-demo"
 	@echo "  make verify-helm-dev               Verifica /health y /metrics del despliegue Helm"
+	@echo "  make deploy-configmap-secret-demo  Despliega el laboratorio base de ConfigMap y Secret"
+	@echo "  make verify-configmap-secret-demo  Verifica la salida HTTP del laboratorio de ConfigMap y Secret"
+	@echo "  make deploy-job-cronjob-demo       Despliega el laboratorio base de Job y CronJob"
+	@echo "  make verify-job-cronjob-demo       Verifica la finalizacion y logs del Job base"
 	@echo "  make install-cert-manager          Instala cert-manager con Helm"
 	@echo "  make deploy-cert-manager-demo      Aplica la demo self-signed"
 	@echo "  make verify-cert-manager-demo      Comprueba el Certificate y el Secret TLS"
@@ -33,6 +40,15 @@ help:
 	@echo "  make deploy-observability-demo     Aplica ServiceMonitor, PrometheusRule y dashboard"
 	@echo "  make verify-grafana                Verifica Grafana por /login"
 	@echo "  make status                        Resume el estado del laboratorio"
+
+docs-serve:
+	mkdocs serve
+
+docs-build:
+	mkdocs build
+
+docs-check:
+	mkdocs build --strict
 
 check-prereqs:
 	@for bin in docker kubectl helm curl; do \
@@ -107,6 +123,31 @@ verify-helm-dev:
 	echo; \
 	echo "METRICS"; \
 	curl -fsS http://127.0.0.1:18081/metrics | sed -n '1,10p'
+
+deploy-configmap-secret-demo:
+	kubectl apply -f examples/k8s/configmap-secret/
+	kubectl -n config-demo rollout status deployment/env-demo --timeout=180s
+
+verify-configmap-secret-demo:
+	@kubectl -n config-demo port-forward service/env-demo 18082:80 >/tmp/pf-config-demo.log 2>&1 & \
+	PF_PID=$$!; \
+	trap 'kill $$PF_PID >/dev/null 2>&1 || true' EXIT; \
+	sleep 5; \
+	OUT=$$(curl -fsS http://127.0.0.1:18082); \
+	echo "$$OUT"; \
+	echo "$$OUT" | grep -q 'APP_NAME=Curso Kubernetes'; \
+	echo "$$OUT" | grep -q 'APP_MODE=laboratorio'; \
+	echo "$$OUT" | grep -q 'API_TOKEN=demo-token-123'
+
+deploy-job-cronjob-demo:
+	kubectl apply -f examples/k8s/job-cronjob/
+	kubectl -n batch-demo wait --for=condition=complete job/saludo-job --timeout=120s
+
+verify-job-cronjob-demo:
+	@kubectl -n batch-demo get cronjob/reporte-cada-cinco-min >/dev/null; \
+	LOGS=$$(kubectl -n batch-demo logs job/saludo-job); \
+	echo "$$LOGS"; \
+	echo "$$LOGS" | grep -q 'Hola desde Kubernetes'
 
 install-cert-manager:
 	helm repo add jetstack https://charts.jetstack.io

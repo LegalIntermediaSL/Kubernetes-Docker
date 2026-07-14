@@ -108,6 +108,7 @@ GitOps mejora mucho cuando los entornos y paths son claros.
 - tags de imagen inmutables
 - charts o manifests faciles de renderizar localmente
 - CI previa a cualquier reconciliacion
+- una estrategia explicita para secretos cifrados o sincronizados fuera de Git
 
 ## Que deberias poder explicar al terminar
 
@@ -121,3 +122,4 @@ Cuando GitOps ya no suena abstracto, conviene reforzar la parte operativa con me
 
 - [Prometheus, Grafana y metricas](22-observabilidad-con-prometheus-y-grafana.md)
 - [Argo CD practico: app-of-apps y sync](27-argocd-practico-app-of-apps-y-sync.md)
+- [SOPS, Sealed Secrets y GitOps seguro](36-sops-sealed-secrets-y-gitops-seguro.md)

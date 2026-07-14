@@ -2,6 +2,8 @@
 
 Este documento convierte las ideas pendientes del repositorio en una hoja de ruta mucho más detallada. La intención no es solo listar temas futuros, sino definir cómo crecer el curso de forma pedagógica, técnica y operativamente coherente.
 
+A dia de hoy, el plan base ya esta ejecutado. Este documento se conserva como trazabilidad historica del diseño pedagogico y tecnico del proyecto, no como lista activa de trabajo pendiente para completar el curso base.
+
 ## Propósito del plan
 
 Este plan existe para resolver cinco necesidades concretas:

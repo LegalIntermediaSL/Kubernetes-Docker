@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hola-nginx
+  namespace: hola-nginx-demo
 spec:
   selector:
     app: hola-nginx

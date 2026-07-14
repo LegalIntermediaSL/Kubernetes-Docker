@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: team-a-quota
+  namespace: scheduling-demo
+spec:
+  hard:
+    pods: "6"
+    requests.cpu: "1000m"
+    requests.memory: 1Gi
+    limits.cpu: "1500m"
+    limits.memory: 1536Mi

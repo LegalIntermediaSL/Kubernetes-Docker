@@ -217,3 +217,4 @@ External Secrets ayuda con sincronizacion y gobierno, pero no sustituye:
 - [Entornos, CI/CD y GitOps](14-entornos-ci-cd-y-gitops.md)
 - [Seguridad aplicada y hardening](17-seguridad-aplicada-y-hardening.md)
 - [Argo CD practico: app-of-apps y sync](27-argocd-practico-app-of-apps-y-sync.md)
+- [SOPS, Sealed Secrets y GitOps seguro](36-sops-sealed-secrets-y-gitops-seguro.md)

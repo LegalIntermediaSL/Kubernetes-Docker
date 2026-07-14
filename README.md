@@ -1,8 +1,8 @@
 # Kubernetes-Docker
 
-Tutorial práctico de Docker y Kubernetes en español.
+Curso práctico completo de Docker y Kubernetes en español.
 
-Este repositorio empieza como una base de curso para aprender a:
+Este repositorio reúne un recorrido guiado y ejecutable para aprender a:
 
 - Entender qué problema resuelve Docker.
 - Construir imágenes y ejecutar contenedores.
@@ -17,6 +17,15 @@ Este material está pensado para:
 - Personas que ya programan y quieren dar el salto a contenedores.
 - Equipos que usan Docker pero todavía no dominan Kubernetes.
 - Estudiantes que prefieren aprender con ejemplos pequeños y ejecutables.
+
+## Estado actual
+
+El plan base del proyecto ya está cerrado. El repositorio incluye:
+
+- Una ruta principal completa de Docker, Kubernetes y CI/CD.
+- Tutoriales guiados de principio a fin.
+- Laboratorios reutilizables en Docker, Compose, Kubernetes y Helm.
+- Validación estructural en CI y validación operativa documentada.
 
 ## Ruta de aprendizaje
 
@@ -63,15 +72,20 @@ Este material está pensado para:
 41. [Backup, restore y disaster recovery](docs/kubernetes/29-backup-restore-y-disaster-recovery.md)
 42. [External Secrets y Secret Stores](docs/kubernetes/30-external-secrets-y-secret-stores.md)
 43. [KEDA y event-driven autoscaling](docs/kubernetes/31-keda-y-event-driven-autoscaling.md)
-44. [Introducción a CI/CD](docs/ci-cd/01-introduccion-ci-cd.md)
-45. [Workflows del repositorio](docs/ci-cd/02-workflows-del-repo.md)
-46. [Publicacion, promocion y releases](docs/ci-cd/03-publicacion-promocion-y-releases.md)
-47. [CI end-to-end con kind](docs/ci-cd/04-ci-end-to-end-con-kind.md)
-48. [Laboratorio local avanzado](docs/06-laboratorio-local-avanzado.md)
-49. [Primer proyecto práctico](docs/03-primer-proyecto.md)
-50. [Proyecto multiservicio](docs/04-proyecto-multiservicio.md)
-51. [Retos prácticos](docs/05-retos-practicos.md)
-52. [Temario completo](docs/temario-completo.md)
+44. [Disponibilidad, scheduling y cuotas](docs/kubernetes/32-disponibilidad-scheduling-y-cuotas.md)
+45. [Supply chain, Trivy, SBOM y firma](docs/kubernetes/33-supply-chain-trivy-sbom-y-firma.md)
+46. [Gateway API y HTTPRoute](docs/kubernetes/34-gateway-api-y-httproute.md)
+47. [Progressive delivery con Argo Rollouts](docs/kubernetes/35-progressive-delivery-con-argo-rollouts.md)
+48. [SOPS, Sealed Secrets y GitOps seguro](docs/kubernetes/36-sops-sealed-secrets-y-gitops-seguro.md)
+49. [Introducción a CI/CD](docs/ci-cd/01-introduccion-ci-cd.md)
+50. [Workflows del repositorio](docs/ci-cd/02-workflows-del-repo.md)
+51. [Publicacion, promocion y releases](docs/ci-cd/03-publicacion-promocion-y-releases.md)
+52. [CI end-to-end con kind](docs/ci-cd/04-ci-end-to-end-con-kind.md)
+53. [Laboratorio local avanzado](docs/06-laboratorio-local-avanzado.md)
+54. [Primer proyecto práctico](docs/03-primer-proyecto.md)
+55. [Proyecto multiservicio](docs/04-proyecto-multiservicio.md)
+56. [Retos prácticos](docs/05-retos-practicos.md)
+57. [Temario completo](docs/temario-completo.md)
 
 ## Estructura del repositorio
 
@@ -143,7 +157,12 @@ Este material está pensado para:
 │       ├── 28-observabilidad-stack-completo.md
 │       ├── 29-backup-restore-y-disaster-recovery.md
 │       ├── 30-external-secrets-y-secret-stores.md
-│       └── 31-keda-y-event-driven-autoscaling.md
+│       ├── 31-keda-y-event-driven-autoscaling.md
+│       ├── 32-disponibilidad-scheduling-y-cuotas.md
+│       ├── 33-supply-chain-trivy-sbom-y-firma.md
+│       ├── 34-gateway-api-y-httproute.md
+│       ├── 35-progressive-delivery-con-argo-rollouts.md
+│       └── 36-sops-sealed-secrets-y-gitops-seguro.md
 ├── notebooks/
 │   ├── 01_generador_dockerfile.ipynb
 │   ├── 02_generador_manifiestos_k8s.ipynb
@@ -169,9 +188,11 @@ Este material está pensado para:
         ├── backup-demo/
         ├── argocd-practical-demo/
         ├── cert-manager-demo/
+        ├── gateway-api-demo/
         ├── external-secrets-demo/
         ├── fullstack-demo/
         ├── gitops-demo/
+        ├── sops-demo/
         ├── helm-demo/
         ├── hola-nginx/
         ├── configmap-secret/
@@ -187,7 +208,10 @@ Este material está pensado para:
         ├── probes-demo/
         ├── postgres-demo/
         ├── python-api/
+        ├── argo-rollouts-demo/
         ├── rbac-demo/
+        ├── scheduling-policy-demo/
+        ├── sealed-secrets-demo/
         ├── scaling-demo/
         ├── service-mesh-demo/
         └── storage-demo/
@@ -203,15 +227,43 @@ Este material está pensado para:
 
 ## Cómo usar este repositorio
 
-La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloque práctico. El repositorio irá creciendo con:
+La forma recomendada es avanzar por los documentos en orden y ejecutar cada bloque práctico. El recorrido base ya está completo y se apoya en:
 
-- Más capítulos
-- Ejercicios guiados
-- Ejemplos de aplicaciones
-- Manifiestos de Kubernetes más completos
-- Proyectos prácticos comparables entre Docker Compose y Kubernetes
-- Charts Helm listos para render y personalizar por entorno
-- Workflows de CI/CD fáciles de leer y adaptar
+- Capítulos progresivos de Docker, Kubernetes y CI/CD.
+- Tutoriales guiados con ejercicios y verificaciones.
+- Ejemplos ejecutables comparables entre Docker Compose, Kubernetes y Helm.
+- Notebooks de apoyo para generar borradores y checklists.
+- Una capa avanzada adicional para disponibilidad, cuotas y supply chain.
+- Extension hacia routing moderno con `Gateway API` y despliegues progresivos con Argo Rollouts.
+- Una especializacion de GitOps seguro con `SOPS`, `Sealed Secrets` y `External Secrets`.
+- Workflows y automatizaciones para repetir validaciones clave.
+
+## Navegación rápida por laboratorios
+
+- [Índice general de ejemplos](examples/README.md)
+- [Ejemplos Docker](examples/docker/README.md)
+- [Ejemplos Kubernetes](examples/k8s/README.md)
+- [Ejemplos Helm](examples/helm/README.md)
+
+## Sitio de documentación con MkDocs
+
+El repositorio incluye configuración para servir la documentación como sitio estático con MkDocs.
+
+Instalación:
+
+```bash
+pip install -r requirements-docs.txt
+```
+
+Comandos útiles:
+
+```bash
+make docs-serve
+make docs-build
+make docs-check
+```
+
+El sitio se construye a partir de `docs/`, usa navegación manual en `mkdocs.yml` y mantiene soporte para los diagramas `Mermaid` del curso.
 
 ## Módulos principales
 
@@ -288,7 +340,7 @@ Varios módulos del repositorio incluyen diagramas `Mermaid` para explicar:
 - El recorrido completo del primer proyecto práctico
 - Los tutoriales paso a paso de Docker y Kubernetes
 
-## Seguimiento del proyecto
+## Seguimiento y trazabilidad
 
 - [Bitácora](bitacora.md)
 - [Changelog](changelog.md)
@@ -303,7 +355,7 @@ Empieza por la [introducción](docs/00-introduccion.md), luego recorre el [temar
 
 El roadmap detallado está en [docs/plan-expansion.md](docs/plan-expansion.md).
 
-La parte principal del plan ya quedó materializada en el repositorio:
+Ese documento se conserva como trazabilidad del diseño y de las decisiones de crecimiento. La parte principal del plan ya quedó materializada en el repositorio:
 
 - bloques básicos, intermedios y superiores de Docker y Kubernetes
 - ejemplos prácticos en Docker, Compose, Kubernetes y Helm
@@ -314,4 +366,4 @@ La parte principal del plan ya quedó materializada en el repositorio:
 
 Ademas, la validacion en vivo ejecutada el 2026-06-09 quedo resumida en [docs/validacion-operativa.md](docs/validacion-operativa.md), con pruebas reales sobre `minikube` para Kustomize, Helm, `cert-manager`, Argo CD y observabilidad.
 
-Los siguientes saltos ya quedarían fuera del plan base y entrarían más en especialización o variantes por proveedor.
+Los siguientes saltos ya quedan fuera del plan base y entran mas en especializacion o variantes por proveedor.

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sops-secret-consumer
+  namespace: sops-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sops-secret-consumer
+  template:
+    metadata:
+      labels:
+        app: sops-secret-consumer
+    spec:
+      containers:
+        - name: consumer
+          image: busybox:1.36
+          command: ["sh", "-c", "echo username=$DB_USERNAME; echo password=$DB_PASSWORD; sleep 3600"]
+          env:
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: gitops-db-credentials
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gitops-db-credentials
+                  key: password
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi

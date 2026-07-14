@@ -2,6 +2,8 @@
 
 Este documento reúne el mapa general del curso para que puedas ver el recorrido completo antes de entrar en cada módulo.
 
+La ruta base ya está materializada en el repositorio y este índice refleja el recorrido completo del proyecto.
+
 ## Bloque 1: fundamentos
 
 1. [Introducción a Docker y Kubernetes](00-introduccion.md)
@@ -105,6 +107,11 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 11. [Backup, restore y disaster recovery](kubernetes/29-backup-restore-y-disaster-recovery.md)
 12. [External Secrets y Secret Stores](kubernetes/30-external-secrets-y-secret-stores.md)
 13. [KEDA y event-driven autoscaling](kubernetes/31-keda-y-event-driven-autoscaling.md)
+14. [Disponibilidad, scheduling y cuotas](kubernetes/32-disponibilidad-scheduling-y-cuotas.md)
+15. [Supply chain, Trivy, SBOM y firma](kubernetes/33-supply-chain-trivy-sbom-y-firma.md)
+16. [Gateway API y HTTPRoute](kubernetes/34-gateway-api-y-httproute.md)
+17. [Progressive delivery con Argo Rollouts](kubernetes/35-progressive-delivery-con-argo-rollouts.md)
+18. [SOPS, Sealed Secrets y GitOps seguro](kubernetes/36-sops-sealed-secrets-y-gitops-seguro.md)
 
 ### Objetivos del bloque
 
@@ -113,6 +120,9 @@ Este documento reúne el mapa general del curso para que puedas ver el recorrido
 - Dar un puente hacia GitOps, gobierno, TLS, metricas y trafico avanzado.
 - Mostrar una fase avanzada mas operativa y ejecutable sobre la base del curso.
 - Introducir recuperacion, rotacion de secretos y escalado por eventos como preocupaciones reales de operacion.
+- Añadir criterios de disponibilidad, cuotas y trazabilidad de artefactos antes de pensar en produccion real.
+- Introducir una capa posterior de routing moderno y control del despliegue con menor blast radius.
+- Cubrir secretos cifrados en Git sin mezclar incorrectamente reconciliacion, render y acceso a material sensible.
 
 ## Bloque 7: CI y validacion avanzada
 
@@ -153,10 +163,13 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 
 - `examples/k8s/backup-demo/`
 - `examples/k8s/argocd-practical-demo/`
+- `examples/k8s/argo-rollouts-demo/`
 - `examples/k8s/cert-manager-demo/`
 - `examples/k8s/external-secrets-demo/`
 - `examples/k8s/fullstack-demo/`
+- `examples/k8s/gateway-api-demo/`
 - `examples/k8s/gitops-demo/`
+- `examples/k8s/sops-demo/`
 - `examples/k8s/helm-demo/`
 - `examples/k8s/hola-nginx/`
 - `examples/k8s/ingress-tls-demo/`
@@ -169,6 +182,8 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 - `examples/k8s/prometheus-demo/`
 - `examples/k8s/python-api/`
 - `examples/k8s/rbac-demo/`
+- `examples/k8s/scheduling-policy-demo/`
+- `examples/k8s/sealed-secrets-demo/`
 - `examples/k8s/scaling-demo/`
 - `examples/k8s/service-mesh-demo/`
 - `examples/k8s/configmap-secret/`
@@ -193,11 +208,11 @@ Estos tutoriales sirven como recorrido continuo y practico. La idea es que no so
 
 Este bloque sirve para consolidar el aprendizaje rompiendo y reparando ejemplos del repositorio en lugar de limitarse a repetir comandos.
 
-## Bloque 12: roadmap del repositorio
+## Bloque 12: roadmap historico del repositorio
 
 - [Plan de expansión](plan-expansion.md)
 
-Este bloque sirve para orientar el crecimiento del curso y priorizar nuevos módulos, ejemplos y automatizaciones.
+Este bloque se conserva como trazabilidad del diseño original del curso y del orden en que se fueron cerrando sus entregables principales.
 
 ### Qué contiene el roadmap
 
@@ -207,6 +222,8 @@ Este bloque sirve para orientar el crecimiento del curso y priorizar nuevos mód
 - banco de laboratorios y ejercicios
 - ruta sugerida por semanas y por perfil de alumno
 - métricas, riesgos, hitos y criterios de aceptación
+
+No hace falta recorrer este bloque para completar la ruta base del curso.
 
 ## Sugerencia de estudio
 
@@ -239,3 +256,6 @@ Al final del temario deberías poder:
 - Entender cuándo conviene añadir `Kustomize`, `cert-manager`, Argo CD y observabilidad más completa.
 - Plantear una estrategia minima de backup y restore, sincronizar secretos sin meterlos en YAML plano y distinguir cuando KEDA aporta valor frente a un `HPA` clasico.
 - Hacer una copia simple de un volumen Docker, restaurarla y diferenciar limpieza segura de borrado destructivo.
+- Explicar cuando usar `PodDisruptionBudget`, `PriorityClass`, `ResourceQuota` y `LimitRange`, y como conectar escaneo, `SBOM` y firma de imagenes con una promocion responsable.
+- Distinguir cuando `Ingress` ya no basta, que aporta `Gateway API` y por que un canary o blue-green requiere observabilidad mas alla del `Deployment` nativo.
+- Elegir con criterio entre `SOPS`, `Sealed Secrets` y `External Secrets` segun donde deba vivir la fuente de verdad del secreto.

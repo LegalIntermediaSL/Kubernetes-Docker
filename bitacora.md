@@ -2,6 +2,121 @@
 
 Registro de trabajo, decisiones y próximos pasos del repositorio.
 
+## 2026-06-22
+
+### Trabajo realizado
+
+- Se añadio soporte completo de MkDocs para convertir `docs/` en un sitio navegable.
+- Se ampliaron los contenidos avanzados de Kubernetes con dos modulos nuevos:
+  - `docs/kubernetes/32-disponibilidad-scheduling-y-cuotas.md`
+  - `docs/kubernetes/33-supply-chain-trivy-sbom-y-firma.md`
+- Se abrio una segunda ampliacion avanzada con dos modulos adicionales:
+  - `docs/kubernetes/34-gateway-api-y-httproute.md`
+  - `docs/kubernetes/35-progressive-delivery-con-argo-rollouts.md`
+- Se amplio despues la especializacion de GitOps seguro con:
+  - `docs/kubernetes/36-sops-sealed-secrets-y-gitops-seguro.md`
+- Se creo un laboratorio nuevo en `examples/k8s/scheduling-policy-demo/` para practicar:
+  - `PodDisruptionBudget`
+  - `PriorityClass`
+  - `ResourceQuota`
+  - `LimitRange`
+  - reparto de replicas con `anti-affinity` y `topologySpreadConstraints`
+- Se añadieron dos laboratorios mas:
+  - `examples/k8s/sops-demo/`
+  - `examples/k8s/sealed-secrets-demo/`
+  - `examples/k8s/gateway-api-demo/`
+  - `examples/k8s/argo-rollouts-demo/`
+- Se creo `mkdocs.yml` con:
+  - `site_name`
+  - `nav` manual basada en el temario
+  - plugin `mermaid2` para conservar los diagramas del curso
+  - hoja de estilo adicional para la portada
+- Se creo `docs/index.md` como landing page del sitio.
+- Se añadieron dependencias de documentacion en `requirements-docs.txt`.
+- Se ampliaron `Makefile` y `README.md` con comandos para servir, construir y validar la documentacion.
+- Se actualizo `ci.yml` para ejecutar `mkdocs build --strict` en CI.
+- Se amplio el validador offline `scripts/validate_k8s_examples.py` para cubrir `PodDisruptionBudget`, `PriorityClass`, `LimitRange` y `ResourceQuota`.
+
+### Decisiones tomadas
+
+- Se mantiene `docs/` como fuente principal del sitio para no duplicar el contenido del curso.
+- La navegacion del sitio queda definida manualmente para respetar el orden pedagogico del temario y no depender del orden alfabetico por archivo.
+- Los diagramas `Mermaid` se conservan en el sitio mediante `mkdocs-mermaid2-plugin`, ya que el repositorio usa Mermaid de forma intensa y perder ese render degradaria mucho la experiencia.
+- El despliegue a GitHub Pages no se activa todavia; primero se deja estable el build y la validacion del sitio dentro de la CI actual.
+- La expansion del curso se orienta ya a especializacion practica de plataforma, no a reabrir el bloque base.
+- El siguiente valor pedagogico esta en disponibilidad, cuotas y trazabilidad del artefacto, no en multiplicar ejemplos basicos equivalentes.
+- La siguiente capa logica despues de supply chain y cuotas es trafico moderno y despliegue progresivo, porque conecta red, observabilidad y riesgo de cambio.
+- GitOps quedaba todavia cojo sin un bloque especifico de secretos cifrados en Git, asi que se abrio una comparativa practica entre `SOPS`, `Sealed Secrets` y `External Secrets`.
+
+### Próximos pasos sugeridos
+
+- Si se quiere publicar la documentacion automaticamente, el siguiente paso natural es un workflow de deploy a GitHub Pages.
+- Tambien se puede abrir una segunda fase para traer al sitio una vista mas integrada de `examples/` y `notebooks/`, ya sea con paginas puente o con una estrategia de documentacion adicional.
+- Si se sigue ampliando Kubernetes, lo mas natural ahora es bajar a implementaciones concretas de `Gateway API`, analisis automatizado en Argo Rollouts o providers reales, no repetir temas ya cubiertos.
+- A partir de aqui, la ampliacion mas natural seria conectar `Argo Rollouts` con analisis Prometheus real o aterrizar `Gateway API` sobre un controlador concreto del laboratorio local.
+- Otra siguiente fase razonable seria bajar `SOPS` a un laboratorio GitOps completo con Flux o mostrar `Sealed Secrets` con rotacion de certificados.
+
+## 2026-06-21
+
+### Trabajo realizado
+
+- Se endurecio la ruta base de Kubernetes para que deje de depender del namespace por defecto.
+- Se añadieron namespaces explicitos en:
+  - `examples/k8s/hola-nginx/`
+  - `examples/k8s/python-api/`
+  - `examples/k8s/configmap-secret/`
+  - `examples/k8s/ingress-demo/`
+  - `examples/k8s/job-cronjob/`
+- Se actualizo la documentacion principal afectada:
+  - `docs/02-kubernetes-fundamentos.md`
+  - `docs/03-primer-proyecto.md`
+  - `docs/kubernetes/08-tutorial-kubernetes-paso-a-paso.md`
+  - `docs/06-laboratorio-local-avanzado.md`
+  - README de los laboratorios base en `examples/k8s/`
+- Se amplio el `Makefile` con validaciones repetibles para:
+  - `ConfigMap` y `Secret`
+  - `Job` y `CronJob`
+- Se amplio el workflow `kind-e2e.yml` para cubrir esos laboratorios base adicionales.
+- Se sustituyo la idea inicial de validacion `kubectl apply --dry-run=client` por una validacion offline propia en `scripts/validate_k8s_examples.py`, mas estable para CI sin cluster.
+
+### Decisiones tomadas
+
+- La ruta base de Kubernetes debe reflejar habitos mas cercanos a entornos reales, aunque eso anada un poco mas de sintaxis con `-n`.
+- La validacion de manifests no debe depender de tener un API server disponible si el objetivo es CI estructural del repositorio.
+- Los laboratorios avanzados con CRDs siguen validandose por parseo, render o e2e segun el caso; los manifests nativos del curso reciben ahora una validacion semantica offline mas estricta.
+
+### Próximos pasos sugeridos
+
+- Si se quiere seguir endureciendo Kubernetes, el siguiente salto natural es anadir checks de politica o conformidad sobre recursos, no tanto mas contenido.
+- Otra mejora posible seria separar mejor los laboratorios que dependen de controladores externos mediante perfiles o matrices de validacion por capacidad del cluster.
+
+## 2026-06-13
+
+### Trabajo realizado
+
+- Se alineo `README.md` con el estado real del repositorio para presentar el curso base como ya completado.
+- Se ajusto `docs/temario-completo.md` para tratar el roadmap como trazabilidad historica y no como lista de pendientes del recorrido principal.
+- Se aclaro `docs/plan-expansion.md` como documento historico del diseno y crecimiento del proyecto.
+- Se anadieron indices navegables en `examples/README.md`, `examples/docker/README.md`, `examples/k8s/README.md` y `examples/helm/README.md`.
+- Se completaron los `README.md` que faltaban en los ejemplos base mas utilizados:
+  - `examples/docker/hola-nginx/`
+  - `examples/docker/python-api/`
+  - `examples/k8s/hola-nginx/`
+  - `examples/k8s/configmap-secret/`
+  - `examples/k8s/ingress-demo/`
+  - `examples/k8s/job-cronjob/`
+
+### Decisiones tomadas
+
+- El proyecto queda cerrado como curso base completo; cualquier trabajo posterior entra ya en especializacion y no en contenido imprescindible.
+- Cada laboratorio principal debe poder entenderse y ejecutarse desde su propio directorio, sin depender de leer primero todo el temario.
+- El roadmap se mantiene por trazabilidad y memoria de diseno, no como señal de que el repositorio siga incompleto.
+
+### Próximos pasos sugeridos
+
+- No hacen falta mas entregables para cerrar el curso base.
+- Si el repositorio vuelve a crecer, lo natural seria abrir lineas de especializacion separadas: supply chain security, cloud providers concretos o stacks de plataforma mas opinionados.
+
 ## 2026-06-12
 
 ### Trabajo realizado

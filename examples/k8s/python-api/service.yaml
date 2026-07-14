@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: python-api
+  namespace: python-api-demo
 spec:
   selector:
     app: python-api

@@ -307,3 +307,4 @@ Después de este bloque, Helm resulta más útil y más fácil de entender:
 - [Tutorial detallado de Kubernetes](08-tutorial-kubernetes-paso-a-paso.md)
 - [RBAC, NetworkPolicies y aislamiento](12-rbac-network-policies-y-aislamiento.md)
 - [StatefulSet, HPA y patrones de escalado](13-statefulsets-hpa-y-patrones-de-escalado.md)
+- [Disponibilidad, scheduling y cuotas](32-disponibilidad-scheduling-y-cuotas.md)

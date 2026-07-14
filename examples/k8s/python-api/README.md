@@ -22,10 +22,12 @@ kind load docker-image python-api:local --name curso-k8s
 kubectl apply -f examples/k8s/python-api/
 ```
 
+El laboratorio crea sus recursos en el namespace `python-api-demo`.
+
 4. Exponer el servicio localmente:
 
 ```bash
-kubectl port-forward service/python-api 8000:80
+kubectl port-forward -n python-api-demo service/python-api 8000:80
 ```
 
 5. Probar la API:
